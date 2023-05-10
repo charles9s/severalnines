@@ -1,0 +1,44 @@
+{
+    "key": "group_625fdfe6443e1",
+    "title": "Control content",
+    "fields": [
+        {
+            "key": "field_625fe01ea30ab",
+            "label": "Toggle content admin",
+            "name": "toggle_content_admin",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "ClusterControl",
+            "ui_off_text": "CCX"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1650457927
+}

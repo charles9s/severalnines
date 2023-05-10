@@ -1,0 +1,125 @@
+.blocks .wp-acf-block-pullquote, .wp-acf-block-pullquote {
+  padding: $mobile-spacing-x1 $mobile-spacing-x1 $mobile-spacing-x1-5 20px;
+  margin: 40px auto 20px;
+  max-width: rem(480px);
+  @include small {
+    max-width: rem(620px);
+  }
+
+  blockquote {
+    position: relative;
+    margin: 0;
+    text-align: left;
+    max-width: 100%;
+
+		&:before {
+			content: '\e801';
+			font-family: "fontello";
+			display: inline-block;
+			position: absolute;
+			color: #f0f1f5;
+			left: -50px;
+    	top: -31px;
+			font-size: rem(80px);
+		}
+
+    p {
+      padding: 0;
+      color: $blue;
+      position: relative;
+      font-size: rem(26px);
+      line-height: 1.5;
+      top: rem(17px);
+      font-weight: 400;
+      font-family: $font-family-headings;
+      text-align: left;
+			font-style: italic;
+      margin-bottom: rem(20px);
+      @include max-small {
+        font-size: rem(22px);
+        line-height: 1.4;
+        margin-bottom: 0;
+      }
+    }
+
+    cite {
+      display: block;
+      padding-top: $mobile-spacing-x0-5;
+      text-align: left;
+      font-family: $font-family-text;
+      font-size: rem(16px);
+      position: relative;
+      line-height: 1.25;
+      letter-spacing: normal;
+      top: rem(18px);
+      color: #6a6a71;
+      font-style: normal;
+    }
+  }
+
+
+  @include medium {
+
+    blockquote {
+      padding: $desktop-spacing-x1 0 $desktop-spacing-x1-5 0;
+
+      &:before {
+        font-size: rem(160px);
+      }
+
+      p {
+        font-size: rem(26px);
+        line-height: 1.5;
+        margin: 0;
+      }
+    }
+
+    cite {
+      line-height: 1.4;
+      font-size: rem(15px);
+      padding-top: $desktop-spacing-x0-5;
+    }
+  }
+}
+
+.blocks .wp-acf-block-quote, .wp-acf-block-quote {
+  padding-left: $mobile-spacing-x1;
+  padding-right: $mobile-spacing-x1;
+  margin-top: $mobile-spacing-x0-5;
+  margin-bottom: $mobile-spacing-x1-5;
+  padding-bottom: 0;
+  position: relative;
+  border-left: 6px solid $pink;
+	margin-left: auto;
+	margin-right: auto;
+
+  p {
+    position: relative;
+    margin: 0;
+    color: black;
+    font-family: $font-family-text;
+    left: rem(15px);
+    padding: 0 !important;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    line-height: 1.71;
+    letter-spacing: -0.15px;
+		margin: 0 !important;
+		@include medium {
+			font-size: rem(18px);
+		}
+		font-size: rem(16px);
+  }
+
+  cite {
+    position: relative;
+    left: rem(15px);
+    font-size: rem(14px);
+    display: block;
+    padding-top: $mobile-spacing-x0-5;
+    margin: 0;
+    color: #6a6a71;
+    font-style: normal;
+  }
+}

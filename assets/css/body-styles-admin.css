@@ -1,0 +1,30 @@
+body.clustercontrol section.ccx {
+		display: none;
+}
+
+body.ccx section.clustercontrol {
+	display: none;
+}
+
+.ccx-prices-block .select-wrapper {
+	display: none !important;
+}
+
+.ccx-prices-block .wp-block-group {
+	display: block !important;
+}
+
+.ccx-prices-block .wp-block-group h3 {
+	display: block !important;
+}
+
+.block-editor-format-toolbar__image-container-content {
+	display: none !important;
+}
+
+.post-type-wp-help .editor-styles-wrapper .wp-block {
+	max-width: 780px;
+	margin: 0 auto;
+	display: block;
+	padding: 10px;
+}

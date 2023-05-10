@@ -1,0 +1,138 @@
+section.clustercontrol-plans-block {
+	margin: rem(-15px);
+	padding: rem(104px 0);
+	.background {
+		background: $blue;
+		width: 100%;
+		padding: rem(64px 0);
+		@include medium {
+			padding: rem(104px 0);
+		}
+		position: relative;
+
+		.shape {
+			width: 0;
+			height: 0;
+			border-left: 27px solid transparent;
+			border-right: 27px solid transparent;
+			border-top: 27px solid #fff;
+			display: block;
+			margin: 0 auto;
+			position: relative;
+			top: -104px;
+		}
+
+		> .container {
+			max-width: rem(1180px);
+			margin: 0 auto;
+		}
+
+		.section-header {
+			margin-bottom: rem(80px);
+			h2 {
+				font-size: rem(30px);
+				font-weight: 800;
+				line-height: 1.2;
+				padding-bottom: rem(14px);
+				color: white;
+				@include medium {
+						font-size: rem(48px);
+						font-weight: 800;
+						line-height: 1.1;
+				}
+			}
+
+			p {
+				color: white;
+			}
+		}
+
+		.wp-block-columns {
+			@include small {
+				column-gap: 16px;
+			}
+
+			.wp-block-column {
+				background: $white;
+				padding: rem(40px);
+				border-top-right-radius: 88px;
+				border-top-left-radius: 88px;
+				border-bottom-right-radius: 88px;
+				margin-left: 0;
+
+				.wp-block-group {
+					margin: rem(-40px -40px 40px);
+					border-top-right-radius: 88px;
+					border-top-left-radius: 88px;
+					padding: rem(40px 40px 0);
+					border-bottom: 1px solid $medium-grey;
+
+					&.pink {
+						background: $pink;
+						> h3 {
+							color: $white;
+						}
+					}
+				}
+
+				ul {
+					margin-bottom: rem(20px);
+					padding-left: rem(16px);
+					li {
+						padding-top: 0;
+						padding-left: rem(8px);
+						padding-bottom: rem(10px);
+						&::marker {
+							content: '\e802';
+							font-family: 'fontello';
+						}
+					}
+				}
+
+				p.prices {
+					padding-bottom: rem(24px);
+					.block {
+						display: block;
+					}
+
+					.bigger {
+						font-size: rem(38px);
+						font-weight: 800;
+						color: $blue;
+						padding-right: 3px;
+					}
+				}
+
+				.icon-picker {
+					img {
+						width: rem(40px);
+						display: block;
+						margin: 0 auto;
+					}
+				}
+
+				.acf-button-block {
+					a.btn {
+						width: 100%;
+						margin-bottom: rem(8px);
+						box-sizing: border-box;
+					}
+					+ p {
+						margin-bottom: 0;
+						> a {
+							font-size: 16px;
+						}
+					}
+				}
+			}
+		}
+
+		.curved-corner-topleft {
+			@include curved-corner-top-left-small;
+		}
+
+		.curved-corner-bottomright {
+			@include curved-corner-bottom-right-small;
+		}
+	}
+}

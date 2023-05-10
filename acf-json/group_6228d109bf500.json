@@ -1,0 +1,40 @@
+{
+    "key": "group_6228d109bf500",
+    "title": "Blocks: Icon picker",
+    "fields": [
+        {
+            "key": "field_6228d113a9ade",
+            "label": "Icon",
+            "name": "icon",
+            "type": "icon-picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "initial_value": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/icon-picker"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1646842156
+}

@@ -1,0 +1,57 @@
+section.icon-grid-block {
+	padding: var(--spacing-m) 0;
+	@include medium {
+		padding: var(--spacing-l) var(--spacing-l) var(--spacing-xxl);
+	}
+	.container {
+		padding: 0;
+		max-width: rem(1180px);
+
+		h2 {
+			font-size: rem(20px);
+			font-weight: 800;
+			line-height: 1.2;
+			color: $blue;
+			margin-bottom: rem(32px);
+			padding-bottom: 0;
+		}
+		.icons {
+			column-gap: rem(50px);
+			display: grid;
+			grid-template-columns: auto auto auto;
+			@include medium {
+				display: inline-flex;
+				justify-content: space-between;
+    		width: 100%;
+			}
+			@include max-medium {
+	      display: flex;
+          flex-wrap: wrap;
+         justify-content: center;
+         column-gap: 1rem;
+			}
+
+			.icon {
+				display: inline;
+				all: unset;
+				@include max-medium {
+             flex: 0 0 27%;
+					&:nth-child(2) {
+			flex: 0 0 35%;
+		}
+		&:nth-child(5) {
+			  flex: 0 0 20%;
+		}
+		&:nth-child(7) {
+			  flex: 0 0 20%;
+		}
+			}
+				img {
+					height: rem(64px);
+					width: 100%;
+					object-fit: contain;
+				}
+			}
+		}
+	}
+}

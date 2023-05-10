@@ -1,0 +1,42 @@
+{
+    "key": "group_6274f831aa403",
+    "title": "Blocks: CCX Prices",
+    "fields": [
+        {
+            "key": "field_6274f8526727d",
+            "label": "Help",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "This block needs to be prepopulated trough <a href=\"..\/wp-admin\/admin.php?page=acf-options-theme-settings\">Theme settings<\/a> and Check tab CCX Cloud services.\r\n\r\nThe amount of tables will pop from pre set cloud services. If you want to add more services afterwards check this video of how to do it:\r\n\r\n<video controls src=\"..\/wp-content\/themes\/severalnines\/assets\/video\/add_cloud_service.mp4\">\r\n<\/video>",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/ccx-prices"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1651841467
+}

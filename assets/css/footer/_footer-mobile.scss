@@ -1,0 +1,127 @@
+@include max-medium {
+  .site-footer {
+		background-color: $blue;
+
+		.wrapper {
+			padding: rem(0 15px);
+			margin: 0 auto;
+		}
+
+    ul {
+      padding-left: 0;
+      margin-left: 0;
+      list-style: none;
+    }
+
+    &__mid {
+      padding: rem(var(--spacing-m)  0 30px);
+
+			.severalnines-socialmedia {
+				display: none;
+			}
+
+      .logo {
+
+        img {
+          width: rem(112px);
+        }
+      }
+
+      .menu-footer {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+        li {
+          padding: rem(8px 0 0);
+
+          a {
+            color: $white;
+						font-size: rem(14px);
+          }
+
+        }
+
+        .menu-item-has-children {
+					padding-top: 40px;
+          > a {
+            color: $white;
+            display: block;
+            font-size: rem(14px);
+            font-weight: 800;
+            position: relative;
+          }
+        }
+
+        .sub-menu {
+          margin-bottom: 0;
+        }
+      }
+
+			.subscribe {
+			 margin-top: rem(48px);
+				h3 {
+					font-weight: bold;
+					color: $white;
+					padding: rem(0 0 8px);
+					font-size: rem(20px);
+				}
+
+				p {
+					color: $white;
+					 margin-bottom: rem(10px);
+					
+					&.small-grey {
+						color: $grey;
+						font-size: rem(12px);
+					}
+				}
+
+				.iframe-wrapper {
+					iframe {
+					}
+				}
+			}
+    }
+
+    &__bottom {
+
+			.severalnines-socialmedia {
+				display: flex;
+				padding-bottom: rem(30px);
+				justify-content: space-between;
+				border-bottom: 1px solid $blue-line;
+				li {
+					a {
+						&:before {
+							color: white;
+						}
+					}
+				}
+			}
+
+			.bottom-left {
+				> p {
+					font-size: rem(12px);
+					text-align: center;
+					color: $grey;
+				}
+			}
+
+      .mandatory-links {
+        list-style: none;
+        width: 100%;
+        position: relative;
+				display: flex;
+				justify-content: space-around;
+				color: #70737a;
+
+        li {
+          a {
+            line-height: 1.67;
+            color: $grey;
+						font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+}

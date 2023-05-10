@@ -1,0 +1,10 @@
+section.basic-hero-block {
+	.basic-hero-header {
+		max-width: rem(650px);
+		margin: 0 auto;
+		p {
+			font-size: rem(20px);
+			line-height: 1.4;
+		}
+	}
+}

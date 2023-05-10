@@ -1,0 +1,225 @@
+@include max-medium {
+  .site-header {
+    height: rem(64px);
+    background: $white;
+    position: fixed;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.22);
+    width: 100%;
+		z-index: 100;
+
+    .hamburger {
+      .hamburger-inner {
+        background-color: $black;
+        &:after, &:before {
+          background-color: $black;
+        }
+      }
+    }
+
+    .logo {
+      position: relative;
+      z-index: 40;
+      img {
+        width: 110px;
+        position: relative;
+        left: 17px;
+        top: 20px;
+      }
+    }
+
+    .nav {
+      top: rem(31px);
+      position: relative;
+      height: 0;
+      background: $white;
+      @include simple-transition-hidden(420ms);
+
+      ul {
+        display: none;
+      }
+    }
+
+    .hamburger {
+      position: absolute;
+      right: 5px;
+      top: 3px;
+      z-index: 40;
+    }
+  }
+
+  &.nav-is-visible {
+    .nav {
+      display: block;
+      position: relative;
+      z-index: 30;
+      box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .06);
+      height: 100vh;
+      @include simple-transition-visible();
+
+      .sub-menu {
+        height: 0;
+        overflow: hidden;
+        @include transition(height, 300ms)
+      }
+
+			.left-side > ul, .right-side > ul{
+				padding: rem(0 0 0 8px);
+			}
+
+      > ul > li:last-of-type {
+        padding-bottom: 0;
+      }
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0 var(--spacing-xs) 0 var(--spacing-xs);
+        position: relative;
+        z-index: 100;
+        display: block;
+
+        li {
+          position: relative;
+          z-index: 120;
+					&:before {
+						content: "";
+						display: block;
+						width: 100vw;
+						height: 1px;
+						background-color: $light-grey-1;
+						position: absolute;
+    				bottom: 0;
+    				left: -25px;
+					}
+
+          &.button {
+            margin-top: 20px;
+            a {
+              color: $white;
+            }
+          }
+
+          > a {
+            display: flex;
+						flex-wrap: wrap;
+						flex-direction: column;
+            padding: rem(var(--spacing-xs) 0px);
+            font-size: rem(16px);
+            font-weight: bold;
+            color: black;
+            position: relative;
+            z-index: 150;
+						span.menu-item-description {
+							font-weight: 400;
+						}
+          }
+        }
+
+        .sub-menu {
+          margin: 0;
+          padding-left: 0;
+          display: block;
+
+          li {
+						&:before {
+							display: none;
+						}
+
+            > a {
+              color: $black;
+              font-size: rem(17px);
+              font-weight: 400;
+              border-bottom: none;
+              line-height: 1.62;
+            }
+
+						&.has-description {
+							> a {
+								font-weight: bold;
+							}
+						}
+          }
+        }
+      }
+
+      .menu-item-has-children.open {
+				> a {
+					&:before {
+						content: "";
+						display: block;
+						width: 100vw;
+						height: 1px;
+						background-color: $light-grey-1;
+						position: absolute;
+						bottom: 0;
+						left: -25px;
+						transform: scaleX(1);
+    				visibility: visible;
+					}
+				}
+        &:after {
+          content: '\e800';
+          transform: rotate(270deg);
+          color: $pink;
+        }
+				> ul {
+					position: relative;
+				}
+      }
+
+      .menu-item-has-children {
+				> a:before {
+					content: "";
+					transform: scaleX(0);
+					width: 0;
+					transition: all .6s cubic-bezier(1,.25,0,.75) 0s;
+					visibility: hidden;
+				}
+        &:after {
+          transform: rotate(90deg);
+          position: absolute;
+          right: -5px;
+          font-size: rem(20px);
+          font-family: "fontello";
+          content: '\e800';
+          top: 0;
+          line-height: normal;
+          color: black;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: rem(50px);
+          width: rem(40px);
+          cursor: pointer;
+        }
+
+        > a {
+          margin-right: rem(60px);
+        }
+      }
+    }
+
+    .hamburger {
+      .hamburger-inner {
+        width: 1.8rem;
+
+        &:after {
+          display: block;
+        }
+
+        &:after, &:before {
+          width: 1.8rem;
+        }
+      }
+    }
+
+    .right-side {
+      .menu-item-right {
+        > a {
+          color: $grey;
+          font-weight: normal;
+        }
+      }
+    }
+  }
+}

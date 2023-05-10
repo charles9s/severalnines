@@ -1,0 +1,200 @@
+section.clustercontrol-prices-block {
+	.wp-block {
+		max-width: rem(1480px);
+	}
+
+	.wp-block-table {
+	}
+
+	.wrapper {
+		max-width: rem(1380px);
+		margin: 0 auto;
+
+		&.admin {
+			ul {
+				position: relative;
+				top: auto;
+			}
+		}
+
+		.section-header {
+			margin-bottom: rem(60px);
+		}
+
+			ul {
+			display: grid;
+			grid-template-columns: 35% 21.5% 24% 19.5%;
+			list-style: none;
+			padding-left: 0;
+			border-bottom: 2px solid black;
+			position: sticky;
+			@include medium {
+				top: 73px;
+			}
+			top: 54px;
+			background: $white;
+
+			li {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				@include medium {
+					font-size: rem(20px);
+					padding: rem(16px);
+				}
+				font-size: 0;
+				font-weight: 800;
+				line-height: 1.2em;
+				color: $blue;
+				padding: rem(12px);
+				&:first-of-type {
+					justify-content: flex-start;
+					font-size: rem(16px);
+				}
+				&:nth-child(2) {
+				&:before {
+					content: "\E803";
+					font-family: fontello;
+					font-size: rem(16px);
+					margin-right: rem(8px);
+					font-weight: normal;
+				}
+			}
+			&:nth-child(3) {
+				background: $pink;
+				color: $white;
+				&:before {
+					content: "\E804";
+					color: $white;
+					font-family: fontello;
+					font-size: rem(16px);
+					margin-right: rem(8px);
+					font-weight: normal;
+				}
+			}
+			&:nth-child(4) {
+				&:before {
+					content: "\E806";
+					font-family: fontello;
+					font-size: rem(16px);
+					margin-right: rem(8px);
+					font-weight: normal;
+				}
+			}
+			}
+		}
+
+		.wp-block-table {
+			display: flex;
+			flex-direction: column;
+
+			img {
+				height: rem(16px);
+				width: rem(16px);
+			}
+
+			table {
+				order: 2;
+				border-bottom: 1px solid $light-grey-1;
+				tbody {
+
+					tr {
+						display: grid;
+						grid-template-columns: 35% 21.5% 24% 19.5%;
+						td {
+							display: flex;
+							justify-content: center;
+							border-left: 1px solid $medium-grey;
+							padding: rem(16px);
+							font-size: rem(12px);
+							@include medium {
+								font-size: rem(16px);
+							}
+
+							&:first-of-type {
+								justify-content: flex-start;
+								font-weight: bold;
+								border-left: 0;
+							}
+							i {
+								font-size: 0;
+								&:before {
+									font-size: rem(16px);
+								}
+								&.pink {
+									color: $pink;
+								}
+							}
+						}
+						th {
+							padding: rem(16px);
+							text-align: left;
+						}
+					}
+				}
+			}
+
+			figcaption {
+				font-size: rem(14px);
+				font-weight: normal;
+				font-stretch: normal;
+				font-style: normal;
+				line-height: normal;
+				letter-spacing: 1.55px;
+				text-transform: uppercase;
+				order: 1;
+				padding-left: rem(16px);
+				padding-bottom: rem(16px);
+				text-align: left;
+			}
+		}
+
+	}
+
+	.button-wrapper {
+		@include medium {
+			display: flex;
+		}
+		padding: 0;
+		display: none;
+		align-items: center;
+    justify-content: flex-end;
+    max-width:rem(857.6px);
+    column-gap: rem(0px);
+		padding-right: rem(0px);
+		margin-top: rem(32px);
+		margin-right:0px;
+		.btn-block {
+			min-width: rem(285px);
+		}
+        .wp-container-12.wp-block-group {
+	  width: 16.3rem !important;
+	padding: 0px !important;
+}
+.wp-container-13.wp-block-group {
+   width: 18.125rem !important;
+	padding: 0px !important;
+}
+.wp-container-14.wp-block-group {
+	   width: 15rem !important;
+	padding: 0px !important;
+}
+
+		.acf-button-block:last-of-type {
+			.btn-block {
+				min-width: rem(229px);
+			}
+		}
+
+		.acf-button-block:first-of-type {
+			.btn-block {
+				min-width: rem(241px);
+			}
+		}
+	}
+}
+@media (min-width:1400px) {
+	section.clustercontrol-prices-block{
+	    max-width: 56.2rem;
+	}
+}

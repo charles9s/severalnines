@@ -1,0 +1,188 @@
+.image_lightbox_popup {
+	display: none;
+	position: fixed;
+	z-index: 99999;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgba(0,0,0,0.8);
+	.modal-content {
+		margin: auto;
+		display: block;
+		width: 80%;
+		background-color: transparent;
+		opacity: 1 !important;
+		max-width: rem(1200px);
+		-webkit-animation-name: zoom;
+		-webkit-animation-duration: 0.6s;
+		animation-name: zoom;
+		animation-duration: 0.6s;
+	}
+	.popup_img_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+	}
+	.modal-close {
+		position: absolute;
+		top: 15px;
+		right: 35px;
+		color: #f1f1f1;
+		font-size: rem(40px);
+		font-weight: bold;
+		transition: 0.3s;
+		&:hover {
+			color: #bbb;
+			text-decoration: none;
+			cursor: pointer;
+		}
+		&:focus {
+			color: #bbb;
+			text-decoration: none;
+			cursor: pointer;
+		}
+	}	
+}
+@-webkit-keyframes zoom {
+  from {-webkit-atransform:scale(0)} 
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+.s9s_lightbox {
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+.Form_design {
+	height: 100%;
+	.button_popup_content {
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.gravity-theme {
+		max-width: 600px;
+		margin: auto;
+		background-color:$white;
+		border-radius: 15px;
+		overflow: hidden;
+		padding: 30px 42px 15px;
+		.gfield {
+			grid-column: span 6 !important;
+			padding: 6px 6px 0;
+			&:nth-last-child(2) {
+				grid-column: span 12 !important;
+			}
+		}
+		.gfield_required {
+			font-size: 12px;
+		}
+		label.gfield_label {
+			color: $blue;
+			font-size: 16px !important;
+			font-weight: 700 !important;
+		}
+		.gform_heading {
+			&:after {
+				content: '';
+				position: absolute;
+				width: 1000%;
+				height: 1px;
+				background-color: #EAEAEA;
+				left: -42px;
+			}
+			padding-left: 70px;
+			position: relative;
+			padding-bottom: 16px;
+			&:before {
+				position: absolute;
+				content: '';
+				width: 90px;
+				height: 90px;
+				background: url(/wp-content/themes/severalnines/assets/img/popicon.svg);
+				background-repeat: no-repeat;
+				left: 0;
+				top: 17px;
+				background-size: 50px;
+			}
+		}
+		h2.gform_title {
+			font-weight: 800;
+			font-size: 24px;
+			line-height: 26px;
+			padding-bottom: 4px;
+		}
+		p.gform_required_legend {
+			font-size: 14px;
+			color: #737E84;
+			margin-bottom: 24px !important;
+		}
+		input[type=text] {
+			border: 1px solid #EAEAEA;
+			height: 35px;
+			padding: 6px 8px !important;
+		}
+		select {
+			border: 1px solid #EAEAEA;
+			height: 35px;
+			padding: 6px 8px !important;
+		}
+		textarea {
+			border: 1px solid #C7C7C7;
+			border-radius: 3px;
+			height: 66px !important;
+		}
+		input[type=submit] {
+			width: 100%;
+		}
+	}
+	.gform_wrapper.gravity-theme {
+		.description {
+			background-color: transparent;
+			font-size: 13.2px !important;
+		}
+		.instruction {
+			background-color: transparent;
+			font-size: 13.2px !important;
+		}
+	}
+	.gform_wrapper {
+		.gfield_validation_message {
+			background-color: transparent;
+			font-size: 13.2px !important;
+		}
+		.validation_message {
+			background-color: transparent;
+			font-size: 13.2px !important;
+		}
+	}
+}
+.cst_gravity_desc {
+	background-color: #f8e7f2;
+	padding: 1.25rem 1.875rem 1.25rem 5.3rem !important;
+	&:before {
+		position: absolute;
+		content: '';
+		width: 48px;
+		height: 48px;
+		background: url(/wp-content/themes/severalnines/assets/img/acf/ico-warning-p.svg);
+		left: 20px;
+	}
+}
+.cst_button_width {
+	a.btn.pink.btn-block {
+		padding: 0.875rem 25px;
+	}
+	div.wp-block-group {
+		padding-left: 0;
+	}
+}
+

@@ -1,0 +1,761 @@
+// This is for Wordpress 5.5 resizable preview feature https://make.wordpress.org/core/2020/08/04/new-editor-preview-options/
+#start-resizable-editor-section {
+  display: none;
+}
+
+/* #Theme related imports
+================================================== */
+
+/* nunito-sans-200 - latin */
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 200;
+  src: url('../font/nunito-sans-v11-latin-200.eot');
+  /* IE9 Compat Modes */
+  src: local(''),
+    url('../font/nunito-sans-v11-latin-200.eot?#iefix') format('embedded-opentype'),
+    /* IE6-IE8 */
+    url('../font/nunito-sans-v11-latin-200.woff2') format('woff2'),
+    /* Super Modern Browsers */
+    url('../font/nunito-sans-v11-latin-200.woff') format('woff'),
+    /* Modern Browsers */
+    url('../font/nunito-sans-v11-latin-200.ttf') format('truetype'),
+    /* Safari, Android, iOS */
+    url('../font/nunito-sans-v11-latin-200.svg#NunitoSans') format('svg');
+  /* Legacy iOS */
+}
+
+/* nunito-sans-300 - latin */
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: url('../font/nunito-sans-v11-latin-300.eot');
+  /* IE9 Compat Modes */
+  src: local(''),
+    url('../font/nunito-sans-v11-latin-300.eot?#iefix') format('embedded-opentype'),
+    /* IE6-IE8 */
+    url('../font/nunito-sans-v11-latin-300.woff2') format('woff2'),
+    /* Super Modern Browsers */
+    url('../font/nunito-sans-v11-latin-300.woff') format('woff'),
+    /* Modern Browsers */
+    url('../font/nunito-sans-v11-latin-300.ttf') format('truetype'),
+    /* Safari, Android, iOS */
+    url('../font/nunito-sans-v11-latin-300.svg#NunitoSans') format('svg');
+  /* Legacy iOS */
+}
+
+/* nunito-sans-regular - latin */
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../font/nunito-sans-v11-latin-regular.eot');
+  /* IE9 Compat Modes */
+  src: local(''),
+    url('../font/nunito-sans-v11-latin-regular.eot?#iefix') format('embedded-opentype'),
+    /* IE6-IE8 */
+    url('../font/nunito-sans-v11-latin-regular.woff2') format('woff2'),
+    /* Super Modern Browsers */
+    url('../font/nunito-sans-v11-latin-regular.woff') format('woff'),
+    /* Modern Browsers */
+    url('../font/nunito-sans-v11-latin-regular.ttf') format('truetype'),
+    /* Safari, Android, iOS */
+    url('../font/nunito-sans-v11-latin-regular.svg#NunitoSans') format('svg');
+  /* Legacy iOS */
+}
+
+/* nunito-sans-italic - latin */
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: url('../font/nunito-sans-v11-latin-italic.eot');
+  /* IE9 Compat Modes */
+  src: local(''),
+    url('../font/nunito-sans-v11-latin-italic.eot?#iefix') format('embedded-opentype'),
+    /* IE6-IE8 */
+    url('../font/nunito-sans-v11-latin-italic.woff2') format('woff2'),
+    /* Super Modern Browsers */
+    url('../font/nunito-sans-v11-latin-italic.woff') format('woff'),
+    /* Modern Browsers */
+    url('../font/nunito-sans-v11-latin-italic.ttf') format('truetype'),
+    /* Safari, Android, iOS */
+    url('../font/nunito-sans-v11-latin-italic.svg#NunitoSans') format('svg');
+  /* Legacy iOS */
+}
+
+/* nunito-sans-600 - latin */
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../font/nunito-sans-v11-latin-600.eot');
+  /* IE9 Compat Modes */
+  src: local(''),
+    url('../font/nunito-sans-v11-latin-600.eot?#iefix') format('embedded-opentype'),
+    /* IE6-IE8 */
+    url('../font/nunito-sans-v11-latin-600.woff2') format('woff2'),
+    /* Super Modern Browsers */
+    url('../font/nunito-sans-v11-latin-600.woff') format('woff'),
+    /* Modern Browsers */
+    url('../font/nunito-sans-v11-latin-600.ttf') format('truetype'),
+    /* Safari, Android, iOS */
+    url('../font/nunito-sans-v11-latin-600.svg#NunitoSans') format('svg');
+  /* Legacy iOS */
+}
+
+/* nunito-sans-700 - latin */
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../font/nunito-sans-v11-latin-700.eot');
+  /* IE9 Compat Modes */
+  src: local(''),
+    url('../font/nunito-sans-v11-latin-700.eot?#iefix') format('embedded-opentype'),
+    /* IE6-IE8 */
+    url('../font/nunito-sans-v11-latin-700.woff2') format('woff2'),
+    /* Super Modern Browsers */
+    url('../font/nunito-sans-v11-latin-700.woff') format('woff'),
+    /* Modern Browsers */
+    url('../font/nunito-sans-v11-latin-700.ttf') format('truetype'),
+    /* Safari, Android, iOS */
+    url('../font/nunito-sans-v11-latin-700.svg#NunitoSans') format('svg');
+  /* Legacy iOS */
+}
+
+/* nunito-sans-800 - latin */
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 800;
+  src: url('../font/nunito-sans-v11-latin-800.eot');
+  /* IE9 Compat Modes */
+  src: local(''),
+    url('../font/nunito-sans-v11-latin-800.eot?#iefix') format('embedded-opentype'),
+    /* IE6-IE8 */
+    url('../font/nunito-sans-v11-latin-800.woff2') format('woff2'),
+    /* Super Modern Browsers */
+    url('../font/nunito-sans-v11-latin-800.woff') format('woff'),
+    /* Modern Browsers */
+    url('../font/nunito-sans-v11-latin-800.ttf') format('truetype'),
+    /* Safari, Android, iOS */
+    url('../font/nunito-sans-v11-latin-800.svg#NunitoSans') format('svg');
+  /* Legacy iOS */
+}
+
+/* nunito-sans-800italic - latin */
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: italic;
+  font-weight: 800;
+  src: url('../font/nunito-sans-v11-latin-800italic.eot');
+  /* IE9 Compat Modes */
+  src: local(''),
+    url('../font/nunito-sans-v11-latin-800italic.eot?#iefix') format('embedded-opentype'),
+    /* IE6-IE8 */
+    url('../font/nunito-sans-v11-latin-800italic.woff2') format('woff2'),
+    /* Super Modern Browsers */
+    url('../font/nunito-sans-v11-latin-800italic.woff') format('woff'),
+    /* Modern Browsers */
+    url('../font/nunito-sans-v11-latin-800italic.ttf') format('truetype'),
+    /* Safari, Android, iOS */
+    url('../font/nunito-sans-v11-latin-800italic.svg#NunitoSans') format('svg');
+  /* Legacy iOS */
+}
+
+/* nunito-sans-900 - latin */
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 900;
+  src: url('../font/nunito-sans-v11-latin-900.eot');
+  /* IE9 Compat Modes */
+  src: local(''),
+    url('../font/nunito-sans-v11-latin-900.eot?#iefix') format('embedded-opentype'),
+    /* IE6-IE8 */
+    url('../font/nunito-sans-v11-latin-900.woff2') format('woff2'),
+    /* Super Modern Browsers */
+    url('../font/nunito-sans-v11-latin-900.woff') format('woff'),
+    /* Modern Browsers */
+    url('../font/nunito-sans-v11-latin-900.ttf') format('truetype'),
+    /* Safari, Android, iOS */
+    url('../font/nunito-sans-v11-latin-900.svg#NunitoSans') format('svg');
+  /* Legacy iOS */
+}
+
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'fontello';
+    src: url('../font/fontello.svg?66772885#fontello') format('svg');
+  }
+}
+*/
+
+@font-face {
+  font-family: 'fontello';
+  src: url('../fontello/font/fontello.eot?81462282');
+  src: url('../fontello/font/fontello.eot?81462282#iefix') format('embedded-opentype'),
+    url('../fontello/font/fontello.woff2?81462282') format('woff2'),
+    url('../fontello/font/fontello.woff?81462282') format('woff'),
+    url('../fontello/font/fontello.ttf?81462282') format('truetype'),
+    url('../fontello/font/fontello.svg?81462282#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: never;
+
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
+.icon-right-open-big:before { content: '\e800'; } /* '' */
+.icon-quote:before { content: '\e801'; } /* '' */
+.icon-checkmark:before { content: '\e802'; } /* '' */
+.icon-tier1:before { content: '\e803'; } /* '' */
+.icon-tier2:before { content: '\e804'; } /* '' */
+.icon-plus:before { content: '\e805'; } /* '' */
+.icon-tier3:before { content: '\e806'; } /* '' */
+.icon-menu:before { content: '\e813'; } /* '' */
+.icon-plus-1:before { content: '\e814'; } /* '' */
+.icon-hosting:before { content: '\e815'; } /* '' */
+.icon-technology:before { content: '\e816'; } /* '' */
+.icon-industry:before { content: '\e817'; } /* '' */
+.icon-product:before { content: '\e818'; } /* '' */
+.icon-data:before { content: '\e819'; } /* '' */
+.icon-doc:before { content: '\e81a'; } /* '' */
+.icon-twitter:before, a[href*=twitter]:before { content: '\f099'; margin-right: 5px; font-family: fontello; font-weight: normal; } /* '' */
+.icon-rss:before, a[href*=rss]:before { content: '\f09e'; margin-right: 5px; font-family: fontello; font-weight: normal; } /* '' */
+.icon-youtube:before, a[href*=youtube]:before { content: '\f16a'; margin-right: 5px; font-family: fontello; font-weight: normal; } /* '' */
+.icon-slideshare:before, a[href*=slideshare]:before { content: '\f1e7'; margin-right: 5px; font-family: fontello; font-weight: normal; } /* '' */
+.icon-facebook:before, a[href*=facebook]:before { content: '\f301'; margin-right: 5px; font-family: fontello; font-weight: normal; } /* '' */
+.icon-linkedin:before, a[href*=linkedin]:before { content: '\f312'; margin-right: 5px; font-family: fontello; font-weight: normal; } /* '' */
+.icon-instagram:before, a[href*=instagram]:before { content: '\f32d'; margin-right: 5px; font-family: fontello; font-weight: normal; } /* '' */
+
+/*
+ * Admin related imports
+ */
+@import 'grid/import';
+@import 'helpers/import';
+@import 'gutenberg/import';
+@import 'gutenberg/blocks/*';
+@import 'layouts/*';
+
+/* #Basic Styles
+================================================== */
+
+p {
+  font-family: $font-family-text;
+  color: $black;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-family-headings;
+  line-height: normal;
+  letter-spacing: normal;
+  position: relative;
+  color: $blue;
+}
+
+h1 {
+	font-size: $heading-font-size-h1;
+	padding: 40px 0 $desktop-spacing-x1 0;
+	line-height: $line-height-h1;
+	@include max-medium {
+		font-size: 30px;
+	}
+}
+
+h2 {
+	font-size: $heading-font-size-h2;
+	padding: 20px 0 $desktop-spacing-x1 0;
+	line-height: $line-height-h2;
+	@include max-medium {
+		font-size: 30px;
+	}
+}
+
+h3 {
+	font-size: $heading-font-size-h3;
+	padding: 20px 0 $desktop-spacing-x1 0;
+	line-height: $line-height-h3;
+	@include max-medium {
+		font-size: 24px;
+	}
+}
+
+h4 {
+	font-size: $heading-font-size-h4;
+	padding: 20px 0 $desktop-spacing-x0-5 0;
+	line-height: $line-height-h4;
+	@include max-medium {
+		 font-size: 16px;
+	}
+}
+
+h5 {
+	font-size: $heading-font-size-h5;
+	padding: 0 0 $desktop-spacing-x0-5 0;
+	line-height: $line-height-h5;
+	@include max-medium {
+		font-size: 14px;
+	}
+}
+
+h6 {
+	font-size: $heading-font-size-h6;
+	padding: $desktop-spacing-x0-5 0;
+	line-height: $line-height-h6;
+	text-transform: uppercase;
+}
+
+pre code {
+  display: block;
+  background: none;
+  white-space: pre;
+  overflow-x: scroll;
+  max-width: 100%;
+  min-width: 100px;
+  padding: 0;
+}
+
+pre {
+    background-color: #f6f8fa;
+    color: $black;
+    page-break-inside: avoid;
+    font-family: 'IBM Plex Mono';
+    font-size: rem(16px);
+    line-height: 1.63;
+    margin-bottom: 1.6em;
+    max-width: 100%;
+    overflow: auto;
+    padding: 1em 1.5em;
+    display: block;
+    word-wrap: break-word;
+		white-space: break-spaces;
+}
+
+iframe {
+	border: none;
+	width: 100%;
+}
+
+//Highlighted text
+::-moz-selection {
+  background: $light-blue;
+  color: $white;
+}
+
+::selection {
+  background: $light-blue;
+  color: $white;
+}
+
+:root {
+  --spacing-xss: 8px;
+  --spacing-xs: 16px;
+  --spacing-s: 24px;
+  --spacing-m: 40px;
+  --spacing-l: 80px;
+  --spacing-xxl: 120px;
+}
+
+/* #Images
+================================================== */
+
+img {
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}
+
+figure.wp-block-image.is-style-rounded img {
+  border-top-left-radius: 25%;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 25%;
+  border-bottom-right-radius: 25%;
+}
+
+/* #Lists
+================================================== */
+
+ul {
+  list-style-type: disc;
+  list-style-position: outside;
+  margin-bottom: rem(var(--spacing-xs));
+  padding-left: rem(var(--spacing-xs));
+  font-family: $font-family-text;
+}
+
+ol {
+  list-style-type: decimal;
+  list-style-position: outside;
+  margin-bottom: rem(var(--spacing-xs));
+  padding-left: rem(var(--spacing-xs));
+}
+
+ul ul,
+ol ul {
+  list-style-type: circle;
+  list-style-position: outside;
+  margin-left: rem(var(--spacing-xs));
+}
+
+ol ol,
+ul ol {
+  list-style-type: lower-latin;
+  list-style-position: outside;
+  margin-left: rem(var(--spacing-xs));
+}
+
+
+/* #Links
+================================================== */
+
+a {
+  text-decoration: none;
+  color: $pink;
+  font-family: $font-family-text;
+
+  &:focus {
+    outline: #d2d2d2 dotted 2px;
+  }
+}
+
+a:active,
+a:hover {
+  outline: 0;
+  cursor: pointer;
+}
+
+.entry-content a,
+.single article a {
+  text-decoration-line: underline;
+  text-decoration-color: $pink;
+
+  &:hover {
+    text-decoration-color: $pink;
+    text-decoration-line: none;
+  }
+}
+
+/* #Buttons
+================================================== */
+
+a.btn,
+a.btn-standard,
+input[type="submit"] {
+  cursor: pointer;
+  font-family: $font-family-text;
+  font-weight: 400;
+
+  @include medium {
+    font-size: rem(16px);
+    padding: rem(14px var(--spacing-m));
+  }
+
+  box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.03);
+  padding:rem(16px 36px);
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  border-top-right-radius: 12px;
+  line-height: 1.33;
+  color: #fff;
+  background-color: $pink;
+  display: inline-block;
+  font-weight: 800;
+  text-align: center;
+  text-decoration: none;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    text-decoration: none;
+    background: $dark-pink;
+  }
+
+  &:focus {
+    outline: $red dotted 2px;
+    outline-offset: 5px;
+  }
+
+  &.transparent {
+    background-color: transparent;
+    color: $pink;
+    border: 1px solid $pink;
+
+    &:hover {
+      background-color: #fbfafa;
+    }
+  }
+
+}
+
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
+.wp-switch-editor {
+	float: left;
+	box-sizing: content-box;
+	position: relative;
+	top: 1px;
+	background: #f0f0f1;
+	color: #646970;
+	cursor: pointer;
+	font-size: 13px;
+	line-height: 1.46153846;
+	height: 20px;
+	border-radius: 0;
+	margin: 5px 0 0 5px;
+	padding: 3px 8px 4px;
+	border: 1px solid #dcdcde;
+}
+
+/* #Text helpers
+================================================== */
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+/* Table styles admin
+================================================== */
+
+.wp-block-table {
+	text-align: left;
+	padding-bottom: $mobile-spacing-x2;
+	border-bottom: none;
+	max-width: rem(1380px);
+	margin-left: auto;
+	margin-right: auto;
+	font-family: $font-family-text;
+
+	table {
+		border-collapse: collapse;
+		width: 99.9%;
+		line-height: 1;
+		tr {
+			&:nth-child(odd) {
+				background: $light-grey-1;
+			}
+		}
+	}
+
+	th {
+		font-weight: bold;
+	}
+
+	td, th {
+		padding: $mobile-spacing-x0-5;
+	}
+
+	thead tr th {
+		background: #f9f9f9;
+		color: #717272;
+	}
+
+	tr td {
+		font-size: rem(17px);
+	}
+
+	.has-background {
+		thead tr th {
+			color: $black;
+		}
+
+		tr td {
+			border: 1px solid $white;
+		}
+	}
+
+	figcaption {
+		font-family: $font-family-text;
+	}
+}
+
+/* Custom admin styles
+================================================== */
+
+hr.wp-block-separator {
+  border: none;
+  height: 1px;
+  width: 100%;
+  background-color: $medium-grey;
+  max-width: rem(480px);
+  margin: 20px auto;
+}
+
+.wp-block[data-align="wide"] {
+  max-width: rem(1380px);
+
+  .wp-block {
+    max-width: 100%;
+  }
+}
+
+.wp-block[data-align="full"] {
+  .wp-block {
+    max-width: 100%;
+  }
+}
+
+.wp-block-code {
+  background-color: #f6f8fa;
+  padding: 1em;
+
+  code {
+    font-family: 'IBM Plex Mono';
+  }
+}
+
+.wp-block {
+  max-width: rem(665px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wp-block-separator:not(.is-style-wide):not(.is-style-dots) {
+  max-width: 100%;
+  margin: rem(40px auto);
+}
+
+div.wp-block.is-selected {
+	padding: 20px;
+}
+
+[data-type="acf/quote"],
+[data-type="acf/button"],
+[data-type="core/video"] {
+  @include content-max-width;
+}
+
+[data-type="core/gallery"] {
+  margin: 0 auto;
+}
+
+[data-type="core/paragraph"] a,
+[data-type="core/list"] a,
+[data-type="core/heading"] a {
+  border-bottom: 1px dotted black;
+}
+
+.wp-block.is-hovered,
+.wp-block.is-selected {
+  outline: $blue solid 2px;
+  outline-offset: 5px;
+  padding: 5px 15px;
+}
+
+[data-type^="acf/"] {
+  max-width: rem(1360px);
+	margin: 40px auto;
+  padding: 5px;
+
+  &[data-align="right"],
+  &[data-align="left"] {
+    .wp-block {
+      @include clearfix;
+      height: auto;
+    }
+  }
+
+  &[data-align="right"] {
+    float: initial;
+  }
+
+  &[data-align="left"] {
+    float: initial;
+  }
+}
+
+[data-type^="acf/cover-with-textbox"],
+[data-type^="acf/features"],
+[data-type^="core/block"],
+[data-type^="acf/blue-background-cta"],
+[data-type^="acf/hero"],
+[data-type^="acf/home-hero"],
+[data-type^="acf/our-products"],
+[data-type^="acf/company"],
+[data-type^="acf/clustercontrol-plans"],
+[data-type^="acf/ccx-plans"],
+[data-type^="acf/clustercontrol-get-started"],
+[data-type^="acf/ccx-get-started"] {
+  max-width: 95%;
+  width: 100%;
+	padding: 0 30px;
+}
+
+[data-type^="core/columns"] {
+  @include container-max-width;
+}
+
+[data-type^="acf/case-hero"] {
+  margin-bottom: 80px;
+  max-width: 100%;
+  width: 100%;
+	padding: 0 30px;
+}
+
+ .acf-block-body .acf-block-fields {
+	max-width: 1080px;
+	margin: 0 auto;
+ }
+
+#end-resizable-editor-section {
+  display: none;
+}

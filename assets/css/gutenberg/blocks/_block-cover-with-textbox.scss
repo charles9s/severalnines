@@ -1,0 +1,110 @@
+section.cover-with-text-box {
+  padding-bottom: 0;
+	padding-top: 0;
+  margin: -15px;
+
+	&.subscribe {
+		.background {
+			.container {
+				.text-box {
+					h3 {
+						padding:rem(0 0 10px);
+					}
+					@include medium {
+						position: relative;
+						display: block;
+					}
+					p.small-grey {
+						font-size: rem(12px);
+						color: $grey;
+						margin-top: -15px;
+    				margin-left: 5px;
+					}
+
+					iframe {
+						height: rem(100px);
+					}
+				}
+			}
+		}
+	}
+
+  .background {
+    padding: 104px 0 56px;
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    align-items: center;
+
+    @include medium {
+      min-height: 480px;
+    }
+
+    .container {
+      @include medium {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+				max-width: rem(1440px);
+      }
+
+      .no-box>.block-editor-inner-blocks>.block-editor-block-list__layout {
+        position: relative;
+        display: grid;
+        grid-template-columns: 75% 25%;
+        border-top-right-radius: 48px;
+        border-top-left-radius: 48px;
+        border-bottom-right-radius: 48px;
+        background: #fff;
+        padding: rem(24px);
+
+        [data-type^="acf/button"] {
+          display: flex;
+          align-items: center;
+        }
+      }
+
+      .text-box {
+        background: #fff;
+        padding: rem(56px 24px);
+        border-top-right-radius: 48px;
+        border-top-left-radius: 48px;
+        border-bottom-right-radius: 48px;
+
+        @include medium {
+          width: 70%;
+          position: absolute;
+          padding: rem(56px);
+          display: grid;
+          grid-template-columns: 75% 25%;
+        }
+
+        .wp-block-group {
+          padding: 0;
+          margin: 0;
+        }
+
+        h2 {
+          padding-top: 0;
+        }
+
+        p {
+          font-size: rem(17px);
+					margin-bottom: rem(16px);
+					@include medium {
+						margin-bottom: 0;
+          	padding-bottom: 0;
+					}
+        }
+      }
+
+      .acf-button-block {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: rem(16px);
+      }
+    }
+  }
+}

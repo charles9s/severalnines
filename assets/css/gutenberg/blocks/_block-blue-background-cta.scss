@@ -1,0 +1,68 @@
+section.blue-background-cta {
+	margin: rem(-15px);
+	padding: rem(104px 0);
+
+	&.extended {
+		.background {
+			padding: rem(176px 0 200px)
+		}
+	}
+
+	.background {
+		background: $blue;
+		width: 100%;
+		padding: rem(64px 0);
+		@include medium {
+			padding: rem(104px 0);
+		}
+		position: relative;
+
+		> .container {
+			max-width: rem(992px);
+		}
+
+		h2 {
+			font-size: rem(30px);
+			font-weight: 800;
+			line-height: 1.2;
+			padding-bottom: rem(24px);
+			@include medium {
+				  font-size: rem(48px);
+					font-weight: 800;
+					line-height: 1.1;
+					padding-bottom: rem(40px);
+			}
+		}
+
+		.icon-picker {
+			img {
+				width: rem(80px);
+			}
+		}
+
+		.curved-corner-topright {
+			@include curved-corner-top-right-small;
+		}
+
+		.curved-corner-topleft {
+			@include curved-corner-top-left-small;
+		}
+
+		.curved-corner-bottomleft {
+			@include curved-corner-bottom-left-small;
+		}
+
+		.curved-corner-bottomright {
+			@include curved-corner-bottom-right-small;
+		}
+	}
+
+	+ .company-section {
+    position: relative;
+    margin-top: rem(-230px);
+		padding-bottom: 40px;
+		@include medium {
+			padding-bottom: 80px;
+		}
+	}
+}

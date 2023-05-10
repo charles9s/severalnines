@@ -1,0 +1,57 @@
+section {
+  padding: rem(var(--spacing-m) 0);
+  @include medium {
+    padding: rem(var(--spacing-xxl) 0);
+  }
+}
+
+// This makes spacing more consistent so larger spaces are created with single tags, but you can stack sections without unnecessary spacings.
+div.blocks {
+  h1, h2, h3, h4, h5, h6, p, blockquote, a, figure, img, strong, ul, ol, table  {
+    + {
+      section, figure, table {
+        margin-top: rem(var(--spacing-s));
+        @include medium {
+          margin-top: rem(var(--spacing-m));
+        }
+      }
+    }
+  }
+}
+
+// We always want to push these HTML tags downwards after any major section block
+div.blocks section + {
+  h1, h2, h3, h4, h5, h6, p, blockquote, a, figure, img, strong, ul, ol, table, div.block-accordion {
+    padding-top: rem(var(--spacing-m));
+    @include medium {
+      padding-top: rem(var(--spacing-l));;
+    }
+  }
+}
+
+ul + .acf-button-block {
+	margin-top: rem(40px);
+}
+
+body.clustercontrol {
+	section.ccx {
+		display: none;
+	}
+}
+
+body.ccx {
+	section.clustercontrol {
+		display: none;
+	}
+}
+
+body.script-installation {
+	section.ccx {
+		display: none;
+	}
+}
+body.docker-image {
+	section.clustercontrol {
+		display: none;
+	}
+}

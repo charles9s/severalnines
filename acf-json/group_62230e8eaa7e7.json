@@ -1,0 +1,69 @@
+{
+    "key": "group_62230e8eaa7e7",
+    "title": "Blocks: Hero",
+    "fields": [
+        {
+            "key": "field_62230e8ebaa85",
+            "label": "Image",
+            "name": "image",
+            "type": "image",
+            "instructions": "Recommended image size is at least:\r\n\r\n900 x 900",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "default_value": 313
+        },
+        {
+            "key": "field_624ea8971c1e4",
+            "label": "Shape",
+            "name": "shape",
+            "type": "true_false",
+            "instructions": "Sets Severalnines style rounded corners for the image",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/hero"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1649322177
+}

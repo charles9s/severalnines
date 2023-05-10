@@ -1,0 +1,243 @@
+body{
+    font-family: 'nunito';
+}
+.download-cc{
+    margin-top:40px;
+}
+.script-nstallation{
+    margin: 0 0 50px;
+}
+.script-nstallation .section-header{
+   
+    max-width: 48rem;
+    margin: 0 auto;
+}
+.script-nstallation .section-header h1{
+    font-size: 2rem;
+    text-align: center;
+    padding: 0; 
+    font-family: 'bbnunito';
+    font-weight: 900; 
+    line-height: 1.1;
+    letter-spacing: normal;
+    position: relative;
+    margin: 0;
+    color: #0a1250;
+}
+.script-nstallation .background{
+    padding: 4.5rem 0;
+    background: #0a1250;
+    position: relative;
+    width: 100%;
+}
+
+.container{
+    max-width: 56.25rem;
+    box-sizing: border-box;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+.script-nstallation .background .container p{
+    font-size: 1.3rem;
+    color: #fff;
+    margin: 0;
+    text-align: center;
+    line-height: 1.61;
+}
+.script-nstallation .background .container p a{
+    color: #fff;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+}
+
+.run-scripts .number{
+    font-size: 2rem;
+    font-weight: 800;
+    color: #b80b7b;
+     font-family: 'ebnunito';
+}
+.run-scripts h2{
+    font-weight: 800;
+    padding: 20px 0 1.17424rem;
+    line-height: 1.26;
+    margin: 0;
+       font-family: 'ebnunito';
+    font-size: 1.5em;
+    color: #b80b7b;
+}
+.run-scripts p{
+    color: #0a1250;
+    margin: 0 0 0.313rem;
+    padding: 0;
+    line-height: 1.61;
+    font-size: 1.125rem;
+    letter-spacing: -.1px;
+}
+.run-scripts .syntaxhighlighter{
+    background-color: #efefef;
+    padding: 0.625rem 1.563rem;
+    border: 2px solid #666;
+    margin: 1.25rem 0;
+    overflow: auto;
+}
+.run-scripts .container .syntaxhighlighter .bash {
+    word-break: break-all;
+    font-size: 16px;
+    float:left;
+    width:20px;
+       font-family: 'nunito';
+    white-space:nowrap;
+
+}
+code{
+   font-size: 16px;   
+}
+.run-scripts .container .syntaxhighlighter .plain {
+    color: #0a1250;
+}
+.run-scripts .container .syntaxhighlighter .line {
+    display:flex;
+}
+.run-scripts .container .syntaxhighlighter .functions {
+    color: #b80b7b;
+}
+.run-scripts .container .note.info {
+    background-color: #f1ecf6;
+    padding: 1.25rem 1.875rem;
+}
+.run-scripts .container .note.info .text {
+    color: #0a1250;
+}
+.run-scripts .container .note.info .text .title {
+    font-weight: 800;
+    position: relative;
+    font-family: 'ebnunito';
+    padding-bottom: 0.313rem;
+}
+.run-scripts .container .note.info img {
+    width: 20px;
+    vertical-align: sub;
+}
+.run-scripts .container .syntaxhighlighter .comments {
+    color: #337347;
+}
+.run-scripts .container .divider {
+    width: 100%;
+    height: 0.125rem;
+    background-color: #ddd;
+    margin: 3.125rem 0 2.5rem;
+}
+.run-scripts .container .note.attention {
+    background-color: #f8e7f2;
+    padding: 1.25rem 1.875rem;
+    margin: 1.25rem 0;
+}
+
+.run-scripts .container .note.attention .text a {
+    color: #0a1250;
+    text-decoration: underline;
+}
+.block-clusterControl {
+    margin: 3.2rem 0 0;
+}
+.block-clusterControl .background {
+    padding: 4rem 0 1rem;
+    background: #0a1250;
+    width: 100%;
+    position: relative;
+}
+
+.block-clusterControl .background>.container {
+    max-width: 62rem;
+}
+.text-center {
+    text-align: center;
+}
+.block-clusterControl .background img {
+    width: 5rem;
+    margin: auto;
+    display: block;
+    margin-bottom: 40px;
+}
+.block-clusterControl .background h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    font-family: 'ebnunito';
+    line-height: 1.1;
+    margin: 0;
+    padding: 20px 0 1.5rem;
+    color: #fff;
+}
+.block-clusterControl .background ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    -moz-column-gap: 1.25rem;
+    column-gap: 1.25rem;
+    list-style: none;
+    padding: 0;
+    font-size: 1.125rem;
+}
+.block-clusterControl .background ul li {
+    width:27%;
+    text-align: center;
+    border: 2px solid #fff;
+    padding: 25px 10px;
+    float: left;
+    margin: 0 10px 32px;
+    border-radius: 1.25rem;
+    transition: box-shadow .25s linear;   
+    display: inline-block;
+}
+.block-clusterControl .background ul li a {
+    color: #fff;
+    text-decoration: underline;
+    display: block;
+    text-decoration-thickness: 1px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    font-family: 'bnunito';
+    line-height: 1.13;
+    text-align: center;
+    color: #fff;
+    padding: 0;
+    margin: 0;
+}
+.run-scripts .container .note.attention .text .title {
+    font-weight: 800;
+    position: relative;
+       font-family: 'ebnunito';
+    padding-bottom: 0.313rem;
+}
+section.run-scripts .container .note.attention .text a {
+    color: #0a1250;
+
+    text-decoration: underline;
+}
+.run-scripts .container .note.attention .text .title img {
+    width: 20px;
+    vertical-align: sub;
+}
+.block-need-help{
+    padding: 60px 0 80px;
+}
+.block-need-help h2{
+    font-size: 2rem;
+    font-weight: 800;
+    text-align: center;
+    line-height: normal;
+    font-family: 'ebnunito';
+    letter-spacing: normal;
+    position: relative;
+    margin: 0;
+    color: #0a1250;
+}
+.block-need-help a{
+    display: block;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    color: #b80b7b;
+}

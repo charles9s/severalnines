@@ -1,0 +1,198 @@
+section.hero-block {
+  padding: 0;
+  margin: -15px;
+  @include medium {
+    height: 770px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .theme {
+    height: 100%;
+    width: 100%;
+    @include medium {
+      background: linear-gradient(90deg,#ffffff 57%, $blue 43%);
+    }
+    border-bottom-right-radius: 148px;
+
+		.box {
+			z-index: 25;
+			position: relative;
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			order: 2;
+
+			@include medium {
+				order: unset;
+				left: 0;
+				width: rem(525px);
+			}
+
+			@include large {
+				left: 15%;
+				width: rem(595px);
+			}
+
+			.content {
+				padding: rem(var(--spacing-m) var(--spacing-s));
+				@include medium {
+					padding: rem(var(--spacing-l) var(--spacing-l) var(--spacing-l) var(--spacing-m));
+				}
+				@include large {
+					float: right;
+				}
+
+				p.mini-title {
+					font-size: rem(14px);
+					letter-spacing: 1.55px;
+					padding-bottom: 0;
+					margin-bottom: rem(16px);
+					text-transform: uppercase;
+					@include medium {
+						margin-bottom: rem(32px);
+					}
+				}
+
+				.acf-button-block {
+					max-width: 100%;
+				}
+
+				h2 {
+					font-weight: bold;
+					margin-bottom: var(--spacing-s);
+					padding: 0;
+					// We need more specific styling for Gutenberg Admin
+					@include medium {
+						font-size: $heading-font-size-h2;
+					}
+				}
+
+				h1 {
+					margin-bottom: var(--spacing-s);
+					padding: 0;
+					@include medium {
+						font-size: $heading-font-size-h1;
+					}
+				}
+
+				p {
+					margin-bottom: rem(24px);
+					font-size: rem(16px);
+					line-height: 1.5;
+					@include medium {
+						font-size: rem(20px);
+						line-height: 1.4;
+					}
+				}
+			}
+		}
+
+		.image {
+			position: relative;
+			order: 1;
+			background: linear-gradient(90deg,#ffffff 32%, $blue 0%);
+			border-bottom-right-radius: 66.3px;
+			margin-bottom: 0;
+			@include medium {
+				order: unset;
+				border-bottom-right-radius: 148px;
+			}
+
+			.image-wrapper {
+				padding: rem(16px 0);
+
+				@include medium {
+					padding: 0;
+					position: absolute;
+					height: 100%;
+				}
+
+				img {
+					object-fit: cover;
+					min-width: 205px;
+					min-height: 205px;
+					width: 65vw;
+					@include medium {
+						width: 450px;
+						height: 450px;
+						position: relative;
+						top: 23%;
+					}
+
+					&.image-shape {
+						border-top-left-radius: 25%;
+						border-bottom-left-radius: 25%;
+						border-top-right-radius: 25%;
+						border-bottom-right-radius: 0;
+					}
+				}
+			}
+		}
+  }
+
+  .grid {
+    margin: 0 auto;
+    @include medium {
+      display: grid;
+      grid-template-columns: 50% 50%;
+      z-index: 25;
+      height: 100%;
+      max-width: rem(1440px);
+    }
+
+    &.no-image {
+
+      .box .content {
+        @include medium {
+          padding: rem(var(--spacing-l) var(--spacing-s) var(--spacing-l) var(--spacing-m));
+        }
+      }
+    }
+  }
+}
+
+section.hero-block + {
+  h1, h2, h3, h4, h5, h6, p, blockquote, a, figure, img, strong {
+    padding-top: 40px;
+    @include medium {
+      padding-top: 80px;
+    }
+  }
+}
+
+section.hero-block.resources {
+	height: auto;
+	.theme {
+		background: none;
+		.box {
+			.content {
+				padding: var(--spacing-l) 0 var(--spacing-s) var(--spacing-m);
+				h1 {
+					font-size: rem(38px);
+					line-height: 1.26;
+					font-weight: 800;
+				}
+			}
+		}
+		.image {
+			background: none;
+			.image-wrapper {
+				position: relative;
+				img {
+					width: rem(675px);
+					height: rem(380px);
+					top: 5%;
+					&.image-shape {
+						border-top-left-radius: 17%;
+						border-bottom-left-radius: 0;
+						border-top-right-radius: 17%;
+						border-bottom-right-radius: 17%;
+					}
+				}
+			}
+		}
+	}
+}

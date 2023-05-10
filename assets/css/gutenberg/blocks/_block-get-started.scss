@@ -1,0 +1,91 @@
+section.get-started-block {
+  margin: rem(-15px);
+  padding: rem(104px 0 0);
+
+  .background {
+    background: $light-grey-1;
+    width: 100%;
+    padding: rem(64px 0);
+
+    @include medium {
+      padding: rem(104px 0);
+    }
+
+    position: relative;
+
+    >.container {
+      max-width: rem(1180px);
+      margin: 0 auto;
+		@include medium {
+       max-width: rem(1280px);
+		padding: 0 6%;
+    }
+    }
+
+    .wp-block-columns {
+      @include medium {
+        column-gap: 16px;
+				display: grid;
+				grid-template-columns: 40% 60%;
+      }
+
+      .wp-block-column {
+        @include medium {
+          padding: rem(40px);
+        }
+        padding: rem(16px);
+        margin-left: 0;
+				background-color: $white;
+				border: 1px solid $medium-grey;
+				width: 100%;
+
+        &:first-of-type {
+          background: transparent;
+					border: none;
+
+					ul {
+						margin: rem(0 auto 24px 0);
+						padding-left: rem(16px);
+						li {
+							font-size: rem(16px);
+							padding-left: rem(8px);
+							padding-bottom: rem(16px);
+							&::marker {
+								content: '\e802';
+								font-size: rem(16px);
+								font-family: 'fontello';
+							}
+						}
+					}
+
+					ol {
+						margin: rem(0 auto 24px 0);
+						padding-left: rem(16px);
+						li {
+							font-size: rem(16px);
+							padding-left: rem(8px);
+							padding-bottom: rem(16px);
+						}
+					}
+
+          @include medium {
+            padding-left: 0;
+            position: relative;
+          }
+
+          * {
+            width: 100%;
+						max-width: rem(330px);
+						margin: 0;
+          }
+
+          p {
+            font-size: rem(16px);
+            line-height: 1.4;
+						padding-bottom: rem(16px);
+          }
+        }
+      }
+    }
+	}
+}

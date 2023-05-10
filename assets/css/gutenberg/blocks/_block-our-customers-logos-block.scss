@@ -1,0 +1,68 @@
+section.our-customer-logos-block {
+	padding: var(--spacing-m) 0;
+       
+	@include medium {
+		padding: var(--spacing-l) var(--spacing-l) var(--spacing-xxl);
+	}
+	.container {
+		padding: 0;
+		max-width:62.75rem;
+
+		h2 {
+			font-weight: 800;
+			line-height: 1.2;
+			color: $blue;
+			margin-bottom: rem(16px);
+			padding-bottom: 0;
+			@include medium {
+		font-size: rem(48px);
+	}
+		}
+        p{
+            color: $blue;
+            font-size: rem(18px);
+
+        }
+		.icons {
+			column-gap: rem(50px);
+			display: grid;
+			grid-template-columns: auto auto auto;
+			@include medium {
+				display: inline-flex;
+				justify-content: space-between;
+    		width: 100%;
+			}
+			@include max-medium {
+	      display: flex;
+          flex-wrap: wrap;
+         justify-content: center;
+         column-gap: 1rem;
+			}
+
+			.icon {
+				display: inline;
+				all: unset;
+					@include max-medium {
+              flex:0 0 20%;
+					&:nth-child(2) {
+			flex: 0 0 15%;
+		}
+		&:nth-child(5) {
+			 flex: 0 0 32%;
+		}
+		&:nth-child(6) {
+			flex: 0 0 32%;
+		}
+						&:nth-child(7) {
+			 flex: 0 0 15%;
+		}
+			}
+				img {
+					height: rem(64px);
+					width: 100%;
+					object-fit: contain;
+				}
+			}
+		}
+	}
+}

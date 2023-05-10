@@ -1,0 +1,66 @@
+.download-cc {
+	.method {
+		color: #222;
+		margin-top: rem(40px);
+		margin-bottom: rem(15px);
+	}
+	.center_logo {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		a {
+			white-space: nowrap;
+			margin: rem(10px 6px);
+			border-radius:5px !important;
+		}
+		.pink {
+			svg {
+				width: rem(20px);
+				padding-right: rem(2px);
+				fill: $pink;
+				position: relative;
+				top: rem(3px);
+			}
+			img {
+				width: rem(20px);
+				padding-right: rem(2px);
+				fill: $pink;
+				position: relative;
+				top: rem(3px);
+			}
+		}
+		.transparent {
+			svg {
+				width: rem(20px);
+				padding-right: rem(2px);
+				fill: $pink;
+				position: relative;
+				top: rem(3px);
+			}
+			img {
+				width: rem(20px);
+				padding-right: rem(2px);
+				fill: $pink;
+				position: relative;
+				top: rem(3px);
+			}
+			&:hover {
+				background-color: $pink !important;
+				color: $white !important;
+			}
+		}
+	}
+	.icon {
+		display: inline-block;
+		width: rem(48px);
+		height: rem(48px);
+		background-color: $white;
+		border-radius: 50%;
+		line-height: rem(48px);
+		margin-right: rem(6px);
+		box-shadow: 0 0 10px rgb(0 0 0 / 20%);
+	}
+}
+
+

@@ -1,0 +1,110 @@
+section.our-products-block {
+	margin: rem(-15px);
+    @include medium {
+			padding: rem(0px 0 120px);
+		}
+	.section-header {
+		max-width: rem(780px);
+		padding-bottom: rem(30px);
+
+		p.mini-title {
+			letter-spacing: 1.55px;
+			font-size: rem(14px);
+			text-transform: uppercase;
+		}
+
+		.icon-picker {
+			margin-bottom: rem(35px);
+			img {
+				height: rem(80px);
+				width: rem(80px);
+			}
+		}
+	}
+
+	.background {
+		background: $blue;
+		width: 100%;
+		position: relative;
+		padding: rem(120px 0 64px);
+		@include medium {
+			padding: rem(120px 0 80px);
+		}
+
+
+		h2 {
+			font-size: rem(30px);
+			font-weight: 800;
+			line-height: 1.2;
+			@include medium {
+				  font-size: rem(48px);
+					font-weight: 800;
+					line-height: 1.1;
+					padding: rem(0 0 10px);
+			}
+		}
+
+		.wp-block-columns {
+			max-width: rem(1080px);
+			column-gap: rem(65px);
+			.wp-block-column {
+				padding: rem(40px);
+				background: white;
+				flex: 1;
+    		margin: rem(0 0 24px);
+
+				&:nth-child(even) {
+						border-top-left-radius: rem(98px);
+						border-top-right-radius: rem(98px);
+						border-bottom-right-radius: rem(98px);
+				}
+
+				&:nth-child(odd) {
+						border-top-left-radius: rem(98px);
+						border-top-right-radius: rem(98px);
+						border-bottom-left-radius: rem(98px);
+				}
+
+				.icon-picker {
+					margin-bottom: rem(35px);
+				}
+
+				.wp-block-image {
+					img {
+						width: rem(328px);
+						object-fit: cover;
+						margin: 0 auto;
+						display: block;
+					}
+				}
+
+				.btn-block {
+					display: flex;
+    			justify-content: center;
+					margin-bottom: 10px;
+				}
+
+				p:last-of-type {
+					margin: 0;
+					padding: 0;
+				}
+			}
+		}
+
+		.curved-corner-topright {
+			@include curved-corner-top-right-small;
+		}
+
+		.curved-corner-topleft {
+			@include curved-corner-top-left-small;
+		}
+
+		.curved-corner-bottomleft {
+			@include curved-corner-bottom-left-small;
+		}
+
+		.curved-corner-bottomright {
+			@include curved-corner-bottom-right-small;
+		}
+	}
+}

@@ -1,0 +1,163 @@
+section.ccx-prices-block {
+	padding-top: rem(40px);
+
+	.wp-block {
+		max-width: rem(1480px);
+	}
+
+	.section-header {
+		max-width: rem(780px);
+    margin: 0 auto;
+    text-align: center;
+		h2 {
+			padding-bottom: 0;
+		}
+	}
+
+	.select-wrapper {
+		align-items: center;
+    border: solid 1px $grey;
+    border-radius: 3px;
+		display: grid;
+		grid-template-columns: auto 1fr;
+		width: 100%;
+		@include medium {
+			width: 480px;
+			margin: rem(80px auto);
+		}
+    margin: rem(40px auto);
+		padding-left: rem(16px);
+		padding-right: rem(5px);
+		position: relative;
+
+		.cats-select-label {
+			font-weight: bold;
+			padding-right: rem(15px);
+		}
+
+		&.selected {
+			background-color: #f8f9fa;
+			select {
+				background-color: #f8f9fa;
+			}
+		}
+
+		select.cloud-services {
+			width: 100%;
+			display: block;
+			font-family: $font-family-text;
+			appearance: none;
+			background-size: 23px;
+			background-image: url('../img/menu-arrow.svg');
+			background-repeat: no-repeat;
+			background-position-x: 97%;
+			background-position-y: 18px;
+			background-color: transparent;
+			font-size: rem(16px);
+			line-height: 1.25;
+			letter-spacing: normal;
+			color: $grey;
+			border: none;
+			padding: 16px 0;
+			outline: none;
+		}
+	}
+
+	.wrapper {
+		max-width: rem(1380px);
+		margin: 0 auto;
+
+		.wp-block-group {
+			max-width: rem(1380px);
+
+			> h3 {
+				display: none;
+			}
+		}
+
+		.hide {
+			display: none;
+		}
+
+		.wp-block-table {
+
+			&.extended {
+				table {
+					tr {
+						@include medium {
+							display: grid;
+							grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+						}
+					}
+				}
+			}
+
+			table {
+				order: 2;
+				border-bottom: 1px solid $light-grey-1;
+
+				tr {
+					@include medium {
+						display: grid;
+						grid-template-columns: 1fr 20%;
+					}
+				}
+
+				thead {
+					tr {
+						th {
+							background: white;
+							color: $grey;
+							font-size:rem(14px);
+							font-weight: normal;
+							text-transform: uppercase;
+							letter-spacing: 1.55px;
+							text-align: center;
+							&:first-of-type {
+								text-align: left;
+							}
+						}
+					}
+				}
+
+				tbody {
+
+					tr {
+						td {
+							border-left: 1px solid $medium-grey;
+							padding: rem(16px);
+							@include medium {
+								font-size: rem(16px);
+							}
+							font-size: rem(12px);
+							text-align: center;
+							&:first-of-type {
+								text-align: left;
+								font-weight: bold;
+								border-left: 0;
+							}
+							i {
+								font-size: 0;
+								&:before {
+									font-size: rem(16px);
+								}
+								&.pink {
+									color: $pink;
+								}
+							}
+						}
+						th {
+							padding: rem(16px);
+							text-align: left;
+						}
+					}
+				}
+			}
+
+			figcaption {
+				display: none;
+			}
+		}
+
+	}
+}

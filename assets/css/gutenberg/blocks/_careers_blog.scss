@@ -1,0 +1,50 @@
+.careers_blog {
+	padding: 0 0 var(--spacing-l);
+	.box {
+		h2 {
+			font-size: rem(38px);
+			padding: 0 0 var(--spacing-l);
+		}
+	}
+	.img_block {
+		border: 2px solid $black;
+		width: rem(124px);
+		height: rem(124px);
+		margin: auto;
+		line-height: rem(124px);
+		border-radius: 50%;
+		padding: rem(23px);
+	}
+	.right_content {
+		h3 {
+			font-size: rem(20px);
+			color:$pink;
+		}
+		p {
+			color:$blue;
+			max-width: rem(833px);
+			margin: auto;
+		}
+	}
+	.block_item {
+		padding-bottom: rem(28px);
+		border-bottom: 0.5px solid #B1B3B6;
+		margin-bottom: rem(58px);
+			@include medium {
+		  padding-bottom: rem(78px);
+          margin-bottom: rem(74px);
+	    }
+		&:last-child {
+			border: 0px;
+			margin-bottom: 0px;
+			padding-bottom: 0px;
+		}
+	}
+	.career_cta {
+	 padding-bottom:rem(30px);
+		a {
+			width: rem(231px);
+			margin: rem(7px);
+		}
+	}
+}

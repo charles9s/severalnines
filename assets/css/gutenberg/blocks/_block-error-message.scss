@@ -1,0 +1,29 @@
+.gform_wrapper {
+    .gfield_validation_message {
+        border: 0px !important;
+        padding: 0 !important;
+    }
+    select {
+        color: $black;
+    }
+    .validation_message {
+        border: 0px !important;
+        padding: 0 !important;
+    }
+    .ginput_container_fileupload {
+        input {
+            color: $black;
+        }
+    }
+    .gform_validation_errors {
+        padding: rem(2px 16px 0px 48px) !important;
+        >h2 {
+            .gform-icon {
+                left: -rem(38px) !important;
+            }
+        }
+    }
+}
+.cst_gravity_desc{
+    color: #006400;
+}

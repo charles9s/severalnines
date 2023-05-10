@@ -1,0 +1,101 @@
+section.ccx-plans-block {
+	margin: rem(-15px);
+	padding: rem(104px 0);
+	.background {
+		background: $blue;
+		width: 100%;
+		padding: rem(64px 0);
+		@include medium {
+			padding: rem(104px 0);
+		}
+		position: relative;
+
+		.shape {
+			width: 0;
+			height: 0;
+			border-left: 27px solid transparent;
+			border-right: 27px solid transparent;
+			border-top: 27px solid #fff;
+			display: block;
+			margin: 0 auto;
+			position: relative;
+			top: -104px;
+		}
+
+		> .container {
+			max-width: rem(1180px);
+			margin: 0 auto;
+		}
+
+		.wp-block-columns {
+			@include medium {
+				column-gap: 16px;
+			}
+
+			.wp-block-column {
+				background: $white;
+				@include medium {
+					padding: rem(40px);
+				}
+				padding: rem(16px);
+				border-top-right-radius: 88px;
+				border-top-left-radius: 88px;
+				border-bottom-right-radius: 88px;
+				margin-left: 0;
+				max-width:rem(550px);
+
+				&:first-of-type {
+					background: transparent;
+					text-align: center;
+					@include medium {
+						text-align: left;
+						display: flex;
+						flex-direction: column;
+						align-items: center;
+						justify-content: center;
+						padding-left: 0;
+						position: relative;
+						left: -2%;
+					}
+
+					* {
+						color: $white;
+						width: 100%;
+					}
+					p {
+						font-size: rem(18px);
+						line-height: 1.61;
+					}
+				}
+			}
+
+			.wp-block-table {
+				margin-top: 0;
+				margin-bottom: 0;
+    		padding-bottom: rem(40px);
+				table {
+					border-bottom: 1px solid $black;
+					tr td {
+						padding: rem(16px);
+					}
+				}
+				figcaption {
+					font-size: rem(20px);
+  				font-weight: 800;
+					font-style: normal;
+					color: $blue;
+					line-height: 1.21;
+					padding: rem(16px);
+				}
+			}
+		}
+
+		.curved-corner-topleft {
+			@include curved-corner-top-left-small;
+		}
+
+		.curved-corner-bottomright {
+			@include curved-corner-bottom-right-small;
+		}
+	}
+}

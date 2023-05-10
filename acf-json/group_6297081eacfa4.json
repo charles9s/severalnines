@@ -1,0 +1,40 @@
+{
+    "key": "group_6297081eacfa4",
+    "title": "Blocks: Product Button",
+    "fields": [
+        {
+            "key": "field_629708280ec76",
+            "label": "Custom link",
+            "name": "custom_link",
+            "type": "link",
+            "instructions": "Create custom link instead of default change.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/product-button"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1654065294
+}

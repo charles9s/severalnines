@@ -1,0 +1,95 @@
+$black: #000000;
+$light-black: #222123;
+$white: #ffffff;
+$grey: #70737a;
+$medium-grey: #cdcfd2;
+$light-grey-1: #f0f1f5;
+$light-grey-2: #f4f4f8;
+$red: #e6051e;
+$blue: #0a1250;
+$blue-line: #2e3361;
+$light-blue: #add9dc;
+$green: #b4cfba;
+$orange: #fac391;
+$beige: #f9e7c1;
+$yellow: #fadc7d;
+$purple: #753FA7;
+$pink: #B80B7B;
+$dark-pink: #a1208a;
+$purple: #753fa7;
+$violet: #6514c4;
+
+// Gutenberg custom color classes
+
+.has-grey-background-color {
+    background-color: $grey;
+    border-color: $grey;
+}
+
+.has-grey-color {
+    color: $grey;
+}
+
+
+.has-light-grey-1-background-color {
+    background-color: $light-grey-1;
+    border-color: $light-grey-1;
+}
+
+.has-light-grey-1-color {
+    color: $light-grey-1;
+}
+
+.has-light-grey-2-background-color {
+    background-color: $light-grey-2;
+    border-color: $light-grey-2;
+}
+
+.has-light-grey-2-color {
+    color: $light-grey-2;
+}
+
+.has-blue-background-color {
+    background-color: $blue;
+    border-color: $blue;
+}
+
+.has-blue-color {
+    color: $blue;
+}
+
+.has-purple-background-color {
+    background-color: $purple;
+    border-color: $purple;
+}
+
+.has-purple-color {
+    color: $purple;
+}
+
+.has-violet-background-color {
+    background-color: $violet;
+    border-color: $violet;
+}
+
+.has-violet-color {
+    color: $violet;
+}
+
+.has-pink-background-color {
+    background-color: $pink;
+    border-color: $pink;
+}
+
+.has-pink-color {
+    color: $pink;
+}
+
+.has-dark-pink-background-color {
+    background-color: $dark-pink;
+    border-color: $dark-pink;
+}
+
+.has-dark-pink-color {
+    color: $dark-pink;
+}

@@ -1,0 +1,51 @@
+section.faq-block {
+	padding: var(--spacing-xxl) 0 var(--spacing-m);
+	@include medium {
+		padding: var(--spacing-m) 0;
+		min-height: rem(550px);
+		margin-bottom: rem(100px);
+	}
+
+	.container {
+		position: relative;
+		padding: 0;
+
+		h2.faq-title {
+			color: $light-grey-1;
+			position: absolute;
+			text-align: center;
+			font-size: rem(160px);
+			top: -146px;
+    	left: auto;
+    	right: auto;
+    	width: 100%;
+			display: flex;
+			justify-content: center;
+			@include large {
+				position: absolute;
+    		left: -6%;
+				font-size: rem(340px);
+				top: 0;
+				width: auto;
+			}
+			margin: 0;
+			letter-spacing: 12px;
+		}
+
+		.wp-block-group.grouping-boxes {
+			max-width: 100%;
+    	position: relative;
+    	margin: 0;
+			padding: 0;
+			@include large {
+    		max-width: rem(675px);
+    		left: 42%;
+			}
+    	width: 100%;
+
+			p {
+				margin: 0;
+			}
+		}
+	}
+}

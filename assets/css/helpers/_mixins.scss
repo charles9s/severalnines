@@ -1,0 +1,268 @@
+/* https://github.com/pierreburel/sass-rem
+================================================== */
+
+$rem-baseline: 16px !default;
+$rem-fallback: false !default;
+$rem-px-only: false !default;
+
+@function rem-separator($list, $separator: false) {
+	@if $separator == "comma" or $separator == "space" {
+		@return append($list, null, $separator);
+	}
+
+	@if function-exists("list-separator") == true {
+		@return list-separator($list);
+	}
+
+	// list-separator polyfill by Hugo Giraudel (https://sass-compatibility.github.io/#list_separator_function)
+	$test-list: ();
+	@each $item in $list {
+		$test-list: append($test-list, $item, space);
+	}
+
+	@return if($test-list == $list, space, comma);
+}
+
+@mixin rem-baseline($zoom: 100%) {
+	font-size: $zoom / 16px * $rem-baseline;
+}
+
+@function rem-convert($to, $values...) {
+	$result: ();
+	$separator: rem-separator($values);
+
+	@each $value in $values {
+		@if type-of($value) == "number" and unit($value) == "rem" and $to == "px" {
+			$result: append($result, $value / 1rem * $rem-baseline, $separator);
+		} @else if type-of($value) == "number" and unit($value) == "px" and $to == "rem" {
+			$result: append($result, $value / $rem-baseline * 1rem, $separator);
+		} @else if type-of($value) == "list" {
+			$value-separator: rem-separator($value);
+			$value: rem-convert($to, $value...);
+			$value: rem-separator($value, $value-separator);
+			$result: append($result, $value, $separator);
+		} @else {
+			$result: append($result, $value, $separator);
+		}
+	}
+
+	@return if(length($result) == 1, nth($result, 1), $result);
+}
+
+@function rem($values...) {
+	@if $rem-px-only {
+		@return rem-convert(px, $values...);
+	} @else {
+		@return rem-convert(rem, $values...);
+	}
+}
+
+@mixin rem($properties, $values...) {
+	@if type-of($properties) == "map" {
+		@each $property in map-keys($properties) {
+			@include rem($property, map-get($properties, $property));
+		}
+	} @else {
+		@each $property in $properties {
+			@if $rem-fallback or $rem-px-only {
+				#{$property}: rem-convert(px, $values...);
+			}
+			@if not $rem-px-only {
+				#{$property}: rem-convert(rem, $values...);
+			}
+		}
+	}
+}
+
+/* #Mixins
+================================================== */
+
+@mixin transition($time, $property:all ) {
+	-webkit-transition: -webkit-$property $time ease-in-out;
+	-moz-transition: -moz-$property $time ease-in-out;
+	-ms-transition: -ms-$property $time ease-in-out;
+	-o-transition: -o-$property $time ease-in-out;
+	transition: $property $time ease-in-out;
+}
+
+@mixin vertical-align($amount) {
+	position: absolute;
+	top: $amount;
+	-webkit-transform: translate3d(0, -$amount, 0);
+	-moz-transform: translate3d(0, -$amount, 0);
+	-ms-transform: translate3d(0, -$amount, 0);
+	-o-transform: translate3d(0, -$amount, 0);
+	transform: translate3d(0, -$amount, 0);
+}
+
+@mixin translate3d($x:0, $y:0, $z:0) {
+	-webkit-transform: translate3d($x, $y, $z);
+	-moz-transform: translate3d($x, $y, $z);
+	-ms-transform: translate3d($x, $y, $z);
+	-o-transform: translate3d($x, $y, $z);
+	transform: translate3d($x, $y, $z);
+}
+
+@mixin curved-corner-top-right-small {
+	@include medium {
+			width: 180px;
+			height: 180px;
+			top: -180px;
+		}
+		width: 56px;
+		height: 56px;
+		top: -56px;
+		overflow: hidden;
+		position: absolute;
+		right: 0;
+		transform: rotate(90deg);
+		&:before {
+			content: "";
+			display: block;
+			width: 200%;
+			height: 200%;
+			position: absolute;
+			border-radius: 50%;
+			top: 0;
+			right: 0;
+			box-shadow: 56px -56px 0 0 $blue;
+		@include medium {
+			box-shadow: 180px -180px 0 0 $blue;
+		}
+	}
+}
+
+@mixin curved-corner-top-left-small {
+	@include medium {
+			width: 180px;
+			height: 180px;
+			top: -180px;
+		}
+		width: 56px;
+		height: 56px;
+		top: -56px;
+		overflow: hidden;
+		position: absolute;
+		left: 0;
+		transform: rotate(180deg);
+		&:before {
+			content: "";
+			display: block;
+			width: 200%;
+			height: 200%;
+			position: absolute;
+			border-radius: 50%;
+			top: 0;
+			right: 0;
+			box-shadow: 56px -56px 0 0 $blue;
+		@include medium {
+			box-shadow: 180px -180px 0 0 $blue;
+		}
+	}
+}
+
+@mixin curved-corner-bottom-left-small {
+	@include medium {
+			width: 180px;
+			height: 180px;
+			bottom: -180px;
+		}
+		width: 56px;
+		height: 56px;
+		bottom: -56px;
+		overflow: hidden;
+		position: absolute;
+		left: 0;
+		transform: rotate(270deg);
+		&:before {
+			content: "";
+			display: block;
+			width: 200%;
+			height: 200%;
+			position: absolute;
+			border-radius: 50%;
+			top: 0;
+			right: 0;
+			box-shadow: 56px -56px 0 0 $blue;
+		@include medium {
+			box-shadow: 180px -180px 0 0 $blue;
+		}
+	}
+}
+
+@mixin curved-corner-bottom-right-small {
+	@include medium {
+			width: 180px;
+			height: 180px;
+			bottom: -180px;
+		}
+		width: 56px;
+		height: 56px;
+		bottom: -56px;
+		overflow: hidden;
+		position: absolute;
+		right: 0;
+		transform: rotate(0deg);
+		&:before {
+			content: "";
+			display: block;
+			width: 200%;
+			height: 200%;
+			position: absolute;
+			border-radius: 50%;
+			top: 0;
+			right: 0;
+			box-shadow: 56px -56px 0 0 $blue;
+		@include medium {
+			box-shadow: 180px -180px 0 0 $blue;
+		}
+	}
+}
+
+
+@mixin simple-transition-hidden($time, $property:all) {
+	@include transition($time, $property);
+	opacity:0;
+	filter:alpha(opacity=0);
+	visibility: hidden;
+}
+
+@mixin simple-transition-visible() {
+	opacity:1;
+	filter:alpha(opacity=1);
+	visibility: visible;
+}
+
+@mixin center-absolute {
+	left:0;
+	right:0;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+@mixin clearfix() {
+	&::after {
+		display: block;
+		content: "";
+		clear: both;
+	}
+}
+
+@mixin content-max-width {
+	@include medium {
+		max-width: rem(480px);
+		margin-left: auto;
+    margin-right: auto;
+	}
+	@include large {
+		max-width: rem(640px);
+		margin-left: auto;
+    margin-right: auto;
+	}
+}
+
+@mixin container-max-width {
+	max-width: rem(1380px);
+	margin-left: auto;
+  margin-right: auto;
+}

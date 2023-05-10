@@ -1,0 +1,88 @@
+{
+    "key": "group_5f213c4b61650",
+    "title": "Blocks: Text and media",
+    "fields": [
+        {
+            "key": "field_5f2423701f8d2",
+            "label": "Image",
+            "name": "image",
+            "type": "image",
+            "instructions": "Recommended image size:\r\n\r\n900 x 900",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "default_value": 313
+        },
+        {
+            "key": "field_624eabe51acd3",
+            "label": "Shape",
+            "name": "shape",
+            "type": "true_false",
+            "instructions": "Sets Severalnines style rounded corners for the image",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5f2423df1f8d4",
+            "label": "Reverse",
+            "name": "reverse",
+            "type": "true_false",
+            "instructions": "This button reverses the order.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "Yes",
+            "ui_off_text": "No"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/text-and-media"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1649742831
+}

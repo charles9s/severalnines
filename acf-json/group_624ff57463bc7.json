@@ -1,0 +1,42 @@
+{
+    "key": "group_624ff57463bc7",
+    "title": "Blocks: Company",
+    "fields": [
+        {
+            "key": "field_624ff58520951",
+            "label": "Help",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "<video controls src=\"..\/wp-content\/themes\/severalnines\/assets\/video\/company-help.mp4\">\r\n<\/video>",
+            "new_lines": "",
+            "esc_html": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/company"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1649412398
+}
