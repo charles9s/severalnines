@@ -3,7 +3,7 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - dev
+      - development
 
 jobs:
   deploy_to_staging:
@@ -15,7 +15,7 @@ jobs:
 
       - name: Deploy to Staging
         run: |
-          ssh <staging_server> 'cd /path/to/stagingwp && git fetch && git checkout staging && git pull origin staging'
+          ssh ${{ secrets.REMOTE_HOST }} 'cd /home/stagingwp/public_html/wp-content/themes/severalnines && git fetch && git checkout staging && git pull origin staging'
 
   deploy_to_production:
     needs: [deploy_to_staging]
