@@ -3,54 +3,28 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - development
+      - dev
 
 jobs:
-  build:
+  deploy_to_staging:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install dependencies
+      - name: Deploy to Staging
         run: |
-          # Add commands to install dependencies for your project
+          ssh ${{ secrets.REMOTE_HOST }} 'cd /home/stagingwp/public_html/wp-content/themes/severalnines && git fetch && git checkout staging && git pull origin staging'
 
-      - name: Run tests
-        run: |
-          # Add commands to run tests for your project
-
-  staging-deploy:
-    needs: build
+  deploy_to_production:
+    needs: [deploy_to_staging]
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/staging'
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install dependencies
+      - name: Deploy to Production
         run: |
-          # Add commands to install dependencies for your project
-
-      - name: Deploy to staging
-        run: |
-          # Add commands to deploy your project to the staging environment
-
-  production-deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/production'
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Install dependencies
-        run: |
-          # Add commands to install dependencies for your project
-
-      - name: Deploy to production
-        run: |
-          # Add commands to deploy your project to the production environment
+          ssh <production_server> 'cd /path/to/productionwp && git fetch && git checkout production && git pull origin production'
