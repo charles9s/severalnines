@@ -3,7 +3,7 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - dev
+      - development
   pull_request:
     branches:
       - staging
@@ -18,5 +18,4 @@ jobs:
 
       - name: Deploy to staging
         run: |
-          # Replace `stagingwp` with the SSH information for your staging server
           ssh ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} 'cd /home/stagingwp/public_html/wp-content/themes/severalnines && git fetch origin && git checkout staging'
