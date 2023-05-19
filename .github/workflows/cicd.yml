@@ -30,4 +30,4 @@ jobs:
 
       - name: Deploy to staging
         run: |
-          scp -P 22999 test.txt ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:/home/${{ secrets.REMOTE_USER }}
+          ssh -p 22999 ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} 'cd /home/stagingwp/public_html/cicdtst' && git fetch origin && git checkout staging'
