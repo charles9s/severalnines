@@ -30,4 +30,4 @@ jobs:
 
       - name: Deploy to staging
         run: |
-          ssh -p 22999 ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} 'cd /home/stagingwp/public_html/cicdtst' && git fetch origin && git checkout staging'
+          ssh -p 22999 ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} 'cd /home/stagingwp/public_html/cicdtst && git fetch origin && git checkout staging'
