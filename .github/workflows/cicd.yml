@@ -3,7 +3,10 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - development
+      - dev
+  pull_request:
+    branches:
+      - staging
 
 jobs:
   deploy_to_staging:
@@ -13,18 +16,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Deploy to Staging
+      - name: Deploy to staging
         run: |
-          ssh ${{ secrets.REMOTE_HOST }} 'cd /home/stagingwp/public_html/wp-content/themes/severalnines && git fetch && git checkout staging && git pull origin staging'
-
-  deploy_to_production:
-    needs: [deploy_to_staging]
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Deploy to Production
-        run: |
-          ssh <production_server> 'cd /path/to/productionwp && git fetch && git checkout production && git pull origin production'
+          # Replace `stagingwp` with the SSH information for your staging server
+          ssh stagingwp@cc1.severalnines.com 'cd /path/to/stagingwp && git fetch origin && git checkout staging'
