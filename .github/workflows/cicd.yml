@@ -1,33 +1,61 @@
-name: CI/CD Pipeline
+# This is a basic workflow to help you get started with Actions
 
+name: CI
+
+# Controls when the workflow will run
 on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches:
-      - development
+    branches: [ "main" ]
   pull_request:
-    branches:
-      - staging
+    branches: [ "main" ]
 
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  deploy_to_staging:
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Connect to server via SSH
-        uses: appleboy/ssh-action@master
-        with:
-          proxy_host: ${{ secrets.JUMPHOST }}
-          proxy_port: ${{ secrets.JUMPPORT }}
-          proxy_username: ${{ secrets.JUMPUSER }}
-          proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
-          host: ${{ secrets.REMOTE_HOST }}
-          username: ${{ secrets.REMOTE_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: ${{ secrets.JUMPPORT }}
-          
-      - name: Checkout code
-        uses: actions/checkout@v2
+  build:
 
-      - name: Deploy to staging
-        run: |
-          ssh ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} 'cd /home/stagingwp/public_html/wp-content/themes/severalnines && git fetch origin && git checkout staging'
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16.x'
+
+
+    - name: Connect to server via SSH
+      uses: appleboy/ssh-action@master
+      with:
+        proxy_host: ${{ secrets.JUMPHOST }}
+        proxy_port: ${{ secrets.JUMPPORT }}
+        proxy_username: ${{ secrets.JUMPUSER }}
+        proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+
+        host: ${{ secrets.REMOTE_HOST }}
+        username: ${{ secrets.REMOTE_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: ${{ secrets.JUMPPORT }}
+
+        script: |
+          ls
+#    - name: Run remote command
+ #     run: |
+   
+    #     scp -P 22999 test.txt ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:/home/${{ secrets.REMOTE_USER }}
+    # - name: Install npm dependencies
+    #  run: npm install
+    # - name: Deploy to Server
+    #  uses: easingthemes/ssh-deploy@main
+    #  env:
+     #     SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+     #     ARGS: "-rlgoDzvc -i --delete"
+     #     REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+     #     REMOTE_USER: ${{ secrets.REMOTE_USER }}
+     #     TARGET: ${{ secrets.REMOTE_TARGET }}
+
+    
