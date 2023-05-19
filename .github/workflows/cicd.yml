@@ -19,4 +19,4 @@ jobs:
       - name: Deploy to staging
         run: |
           # Replace `stagingwp` with the SSH information for your staging server
-          ssh stagingwp@cc1.severalnines.com 'cd /path/to/stagingwp && git fetch origin && git checkout staging'
+          ssh ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} 'cd /home/stagingwp/public_html/wp-content/themes/severalnines && git fetch origin && git checkout staging'
