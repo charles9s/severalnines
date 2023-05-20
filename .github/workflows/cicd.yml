@@ -34,6 +34,7 @@ jobs:
         port: ${{ secrets.JUMPPORT }}
         script: |
           cd ../cicdtst
+          git init
           git fetch origin
           git checkout ${{ env.BRANCH_NAME }}
           git pull
