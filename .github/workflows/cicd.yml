@@ -24,9 +24,7 @@ jobs:
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.JUMPPORT }}
-          
-      - name: Checkout code
-        uses: actions/checkout@v2
+
 
       - name: Deploy to staging
         run: |
