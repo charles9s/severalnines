@@ -33,7 +33,7 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.JUMPPORT }}
         script: |
-          cd ../cicdtst
+          cd cicdtst
           git init
           git fetch origin
           git checkout ${{ env.BRANCH_NAME }}
