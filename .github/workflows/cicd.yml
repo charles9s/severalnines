@@ -1,31 +1,42 @@
-name: CI/CD Pipeline
+name: CI
 
 on:
   push:
-    branches:
-      - development
+    branches: [ "development" ]
   pull_request:
-    branches:
-      - staging
+    branches: [ "staging" ]
 
 jobs:
-  deploy_to_staging:
+  build:
+
     runs-on: ubuntu-latest
 
     steps:
-      - name: Connect to server via SSH
-        uses: appleboy/ssh-action@master
-        with:
-          proxy_host: ${{ secrets.JUMPHOST }}
-          proxy_port: ${{ secrets.JUMPPORT }}
-          proxy_username: ${{ secrets.JUMPUSER }}
-          proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
-          host: ${{ secrets.REMOTE_HOST }}
-          username: ${{ secrets.REMOTE_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: ${{ secrets.JUMPPORT }}
+    - uses: actions/checkout@v3
 
+    - name: Extract branch name
+      id: branch_name
+      run: echo "BRANCH_NAME=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
 
-      - name: Deploy to staging
-        run: |
-          ssh -P 22999 ${{ secrets.REMOTE_USER }}@${{ secrets.STAGING_HOST }} 'cd /home/stagingwp/public_html/cicdtst && git fetch origin && git checkout staging'
+    - name: Use branch name
+      run: echo ${{ env.BRANCH_NAME }}
+
+    - name: Connect to server and update code via SSH
+      uses: appleboy/ssh-action@master
+      with:
+        proxy_host: ${{ secrets.JUMPHOST }}
+        proxy_port: ${{ secrets.JUMPPORT }}
+        proxy_username: ${{ secrets.JUMPUSER }}
+        proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
+        host: ${{ secrets.REMOTE_HOST }}
+        username: ${{ secrets.REMOTE_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: ${{ secrets.JUMPPORT }}
+        script: |
+          cd dbas
+          git fetch origin
+          git checkout ${{ env.BRANCH_NAME }}
+          git pull
+
+    - name: Push to staging branch
+      run: git push origin ${{ env.BRANCH_NAME }}:staging
