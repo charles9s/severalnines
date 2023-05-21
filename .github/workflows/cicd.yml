@@ -3,65 +3,54 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - development
+      - local_branch_name
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Connect to server via SSH
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.REMOTE_HOST }}
-        username: ${{ secrets.REMOTE_USER }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        port: ${{ secrets.SSH_PORT }}
-        script: |
-          cd s9s
-          # Add any other commands related to your deployment here
-          # For example:
-          # - git pull origin staging
-          # - npm install
-          # - npm run build
-          # - ...
+      - name: Set up Git
+        run: |
+          git config user.name "charles9s"
+          git config user.email "charles@severalnines.com"
 
-    - name: Push to development branch
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.REMOTE_HOST }}
-        username: ${{ secrets.REMOTE_USER }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        port: ${{ secrets.SSH_PORT }}
-        script: |
-          cd s9s
-          git add .
-          git commit -m "Review changes in s9s directory"
-          git push origin development
+      - name: Push code to development branch
+        run: |
+          git push origin HEAD:development
 
-    - name: Pull from staging branch
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.REMOTE_HOST }}
-        username: ${{ secrets.REMOTE_USER }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        port: ${{ secrets.SSH_PORT }}
-        script: |
-          cd s9s
+      - name: Create pull request from staging branch
+        run: |
+          git checkout staging
           git pull origin staging
+          git checkout -b pull_request_branch
+          git push origin pull_request_branch
 
-    - name: Deploy to public_html/cicdtst
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.REMOTE_HOST }}
-        username: ${{ secrets.REMOTE_USER }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        port: ${{ secrets.SSH_PORT }}
-        script: |
-          # Add deployment commands to copy files from s9s to public_html/cicdtst
-          # For example:
-          # - cp -R s9s/* public_html/cicdtst
-          # - ...
+      - name: Deploy code to staging server
+        uses: appleboy/ssh-action@master
+        with:
+          proxy_host: ${{ secrets.JUMPHOST }}
+          proxy_port: ${{ secrets.JUMPPORT }}
+          proxy_username: ${{ secrets.JUMPUSER }}
+          proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22999
+          script: |
+            cd s9s
+            # Add any other commands related to your deployment here
+            # For example:
+            # - npm install
+            # - npm run build
+            # - ...
+
+      - name: Merge pull request to staging
+        run: |
+          git fetch origin pull_request_branch
+          git checkout staging
+          git merge pull_request_branch
+          git push origin staging
