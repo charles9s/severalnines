@@ -7,8 +7,9 @@ on:
 
 jobs:
   deploy:
+    name: Deploy to Staging
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -16,20 +17,11 @@ jobs:
       - name: Connect to server via SSH
         uses: appleboy/ssh-action@master
         with:
-          proxy_host: ${{ secrets.JUMPHOST }}
-          proxy_port: ${{ secrets.JUMPPORT }}
-          proxy_username: ${{ secrets.JUMPUSER }}
-          proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: 22999
+          port: ${{ secrets.SSH_PORT }}
           script: |
-            # Update staging branch
-            git fetch origin staging:staging
-
-            # Push changes to staging branch
-            git push origin staging
-
-            # Update public_html/cicdtst folder
-            ssh -o StrictHostKeyChecking=no -p 22999 ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "cd public_html/cicdtst && git pull origin staging"
+            cd /path/to/public_html/cicdtst
+            git fetch origin
+            git reset --hard origin/staging
