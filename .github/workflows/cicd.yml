@@ -7,23 +7,61 @@ on:
 
 jobs:
   deploy:
-    name: Deploy to Staging
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-      - name: Connect to server via SSH
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.REMOTE_HOST }}
-          username: ${{ secrets.REMOTE_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: ${{ secrets.SSH_PORT }}
-          script: |
-            cd /path/to/public_html/cicdtst
-            git fetch origin
-            git reset --hard origin/staging
+    - name: Connect to server via SSH
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.REMOTE_HOST }}
+        username: ${{ secrets.REMOTE_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: ${{ secrets.SSH_PORT }}
+        script: |
+          cd s9s
+          # Add any other commands related to your deployment here
+          # For example:
+          # - git pull origin staging
+          # - npm install
+          # - npm run build
+          # - ...
 
-            
+    - name: Push to development branch
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.REMOTE_HOST }}
+        username: ${{ secrets.REMOTE_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: ${{ secrets.SSH_PORT }}
+        script: |
+          cd s9s
+          git add .
+          git commit -m "Review changes in s9s directory"
+          git push origin development
+
+    - name: Pull from staging branch
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.REMOTE_HOST }}
+        username: ${{ secrets.REMOTE_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: ${{ secrets.SSH_PORT }}
+        script: |
+          cd s9s
+          git pull origin staging
+
+    - name: Deploy to public_html/cicdtst
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.REMOTE_HOST }}
+        username: ${{ secrets.REMOTE_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: ${{ secrets.SSH_PORT }}
+        script: |
+          # Add deployment commands to copy files from s9s to public_html/cicdtst
+          # For example:
+          # - cp -R s9s/* public_html/cicdtst
+          # - ...
