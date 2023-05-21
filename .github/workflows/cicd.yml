@@ -32,8 +32,9 @@ jobs:
         port: ${{ secrets.JUMPPORT }}
         script: |
           cd public_html/cicdtst
+          git fetch origin
           git checkout development
-          git pull
+          git pull origin development
           git push origin development
           git checkout -b staging
           git push origin staging
