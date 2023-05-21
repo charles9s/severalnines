@@ -1,50 +1,36 @@
-name: CI
+name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ "development" ]
+    branches:
+      - development
 
 jobs:
-  build:
-
+  deploy:
     runs-on: ubuntu-latest
-
+    
     steps:
-    - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Extract branch name
-      id: branch_name
-      run: echo "BRANCH_NAME=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
+      - name: Connect to server via SSH
+        uses: appleboy/ssh-action@master
+        with:
+          proxy_host: ${{ secrets.JUMPHOST }}
+          proxy_port: ${{ secrets.JUMPPORT }}
+          proxy_username: ${{ secrets.JUMPUSER }}
+          proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.JUMPPORT }}
+          script: |
+            # Update staging branch
+            git checkout staging
+            git pull origin development
 
-    - name: Use branch name
-      run: echo ${{ env.BRANCH_NAME }}
+            # Push changes to staging branch
+            git push origin staging
 
-    - name: Configure Git
-      run: |
-        git config --global user.name "charles9s)"
-        git config --global user.email "charles@severalnines.com"
-
-    - name: Push changes to development branch
-      run: |
-        git push origin HEAD:${{ env.BRANCH_NAME }}
-
-    - name: Create pull request to staging branch
-      uses: peter-evans/create-pull-request@v3
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        commit-message: Pull request from development to staging
-        title: Pull request from development to staging
-        body: |
-          This pull request is automatically generated to deploy changes from the development branch to the staging server.
-        branch: staging
-        base: development
-
-    - name: Connect to staging server and update code via SSH
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.STAGING_HOST }}
-        username: ${{ secrets.STAGING_USER }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        script: |
-          cd public_html/cicdtst
-          git pull origin staging
+            # Update public_html/cicdtst folder
+            ssh -o StrictHostKeyChecking=no ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "cd public_html/cicdtst && git pull origin staging"
