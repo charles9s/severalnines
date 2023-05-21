@@ -25,3 +25,5 @@ jobs:
             cd /path/to/public_html/cicdtst
             git fetch origin
             git reset --hard origin/staging
+
+            
