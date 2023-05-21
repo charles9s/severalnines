@@ -19,8 +19,14 @@ jobs:
     - name: Use branch name
       run: echo ${{ env.BRANCH_NAME }}
 
+    - name: Configure Git
+      run: |
+        git config --global user.name "charles9s)"
+        git config --global user.email "charles@severalnines.com"
+
     - name: Push changes to development branch
-      run: git push origin ${{ env.BRANCH_NAME }}
+      run: |
+        git push origin HEAD:${{ env.BRANCH_NAME }}
 
     - name: Create pull request to staging branch
       uses: peter-evans/create-pull-request@v3
