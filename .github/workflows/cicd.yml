@@ -16,6 +16,10 @@ jobs:
       - name: Connect to server via SSH
         uses: appleboy/ssh-action@master
         with:
+          proxy_host: ${{ secrets.JUMPHOST }}
+          proxy_port: ${{ secrets.JUMPPORT }}
+          proxy_username: ${{ secrets.JUMPUSER }}
+          proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
