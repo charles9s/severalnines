@@ -19,21 +19,26 @@ jobs:
     - name: Use branch name
       run: echo ${{ env.BRANCH_NAME }}
 
-    - name: Connect to server and update code via SSH
+    - name: Push changes to development branch
+      run: git push origin ${{ env.BRANCH_NAME }}
+
+    - name: Create pull request to staging branch
+      uses: peter-evans/create-pull-request@v3
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        commit-message: Pull request from development to staging
+        title: Pull request from development to staging
+        body: |
+          This pull request is automatically generated to deploy changes from the development branch to the staging server.
+        branch: staging
+        base: development
+
+    - name: Connect to staging server and update code via SSH
       uses: appleboy/ssh-action@master
       with:
-        proxy_host: ${{ secrets.JUMPHOST }}
-        proxy_port: ${{ secrets.JUMPPORT }}
-        proxy_username: ${{ secrets.JUMPUSER }}
-        proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
-        host: ${{ secrets.REMOTE_HOST }}
-        username: ${{ secrets.REMOTE_USER }}
+        host: ${{ secrets.STAGING_HOST }}
+        username: ${{ secrets.STAGING_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
-        port: ${{ secrets.JUMPPORT }}
         script: |
           cd public_html/cicdtst
-          git fetch origin
-          git checkout development
-          git pull origin development
-          git push origin development
-          git push origin staging
+          git pull origin staging
