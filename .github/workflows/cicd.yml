@@ -3,7 +3,7 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - local_branch_name
+      - development
 
 jobs:
   deploy:
