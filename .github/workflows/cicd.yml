@@ -36,4 +36,5 @@ jobs:
           cd public_html/cicdtst
           git branch development
           git checkout development
+          git fetch
           git pull
