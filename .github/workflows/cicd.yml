@@ -29,7 +29,6 @@ jobs:
             git checkout staging
             git pull origin development
 
-            # Push changes to staging branch
             git push origin staging
 
             # Update public_html/cicdtst folder
