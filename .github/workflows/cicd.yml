@@ -3,8 +3,6 @@ name: CI
 on:
   push:
     branches: [ "development" ]
-  pull_request:
-    branches: [ "staging" ]
 
 jobs:
   build:
@@ -34,7 +32,8 @@ jobs:
         port: ${{ secrets.JUMPPORT }}
         script: |
           cd public_html/cicdtst
-          git branch development
           git checkout development
-          git fetch
           git pull
+          git push origin development
+          git checkout -b staging
+          git push origin staging
