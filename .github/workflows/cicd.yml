@@ -34,5 +34,5 @@ jobs:
         port: ${{ secrets.JUMPPORT }}
         script: |
           cd public_html/cicdtst
-          git checkout ${{ env.BRANCH_NAME }}
+          git checkout development
           git pull
