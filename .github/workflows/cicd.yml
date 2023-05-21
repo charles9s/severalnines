@@ -23,6 +23,7 @@ jobs:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22999
           script: |
             # Update staging branch
             git fetch origin staging:staging
@@ -31,4 +32,4 @@ jobs:
             git push origin staging
 
             # Update public_html/cicdtst folder
-            ssh -o StrictHostKeyChecking=no ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "cd public_html/cicdtst && git pull origin staging"
+            ssh -o StrictHostKeyChecking=no -p 22999 ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "cd public_html/cicdtst && git pull origin staging"
