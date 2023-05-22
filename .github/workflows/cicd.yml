@@ -54,3 +54,12 @@ jobs:
           git checkout staging
           git merge pull_request_branch
           git push origin staging
+
+      - name: Deploy to production
+        # Add deployment steps to the production environment
+        # For example, using SSH or another deployment method
+
+      - name: Cleanup
+        run: |
+          git checkout development
+          git branch -D pull_request_branch
