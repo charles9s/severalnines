@@ -1,41 +1,65 @@
-name: CI
+name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ "development" ]
-  pull_request:
-    branches: [ "staging" ]
+    branches:
+      - development
 
 jobs:
-  build:
-
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Extract branch name
-      id: branch_name
-      run: echo "BRANCH_NAME=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
+      - name: Set up Git
+        run: |
+          git config user.name "charles9s"
+          git config user.email "charles@severalnines.com"
 
-    - name: Use branch name
-      run: echo ${{ env.BRANCH_NAME }}
+      - name: Push code to development branch
+        run: |
+          git push origin HEAD:development
 
-    - name: Connect to server and update code via SSH
-      uses: appleboy/ssh-action@master
-      with:
-        proxy_host: ${{ secrets.JUMPHOST }}
-        proxy_port: ${{ secrets.JUMPPORT }}
-        proxy_username: ${{ secrets.JUMPUSER }}
-        proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
-        host: ${{ secrets.REMOTE_HOST }}
-        username: ${{ secrets.REMOTE_USER }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        port: ${{ secrets.JUMPPORT }}
-        script: |
-          cd public_html/cicdtst
-          git checkout ${{ env.BRANCH_NAME }}
-          git pull
+      - name: Create pull request from staging branch
+        run: |
+          git checkout staging
+          git pull origin staging
+          git checkout -b pull_request_branch
+          git push origin pull_request_branch
 
-    - name: Push to staging branch
-      run: git push origin ${{ env.BRANCH_NAME }}:staging
+      - name: Deploy code to staging server
+        uses: appleboy/ssh-action@master
+        with:
+          proxy_host: ${{ secrets.JUMPHOST }}
+          proxy_port: ${{ secrets.JUMPPORT }}
+          proxy_username: ${{ secrets.JUMPUSER }}
+          proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22999
+          script: |
+            cd s9s
+            # Add any other commands related to your deployment here
+            # For example:
+            # - npm install
+            # - npm run build
+            # - ...
+
+      - name: Merge pull request to staging
+        run: |
+          git fetch origin pull_request_branch
+          git checkout staging
+          git merge pull_request_branch
+          git push origin staging
+
+      - name: Deploy to production
+        # Add deployment steps to the production environment
+        # For example, using SSH or another deployment method
+
+      - name: Cleanup
+        run: |
+          git checkout development
+          git branch -D pull_request_branch
