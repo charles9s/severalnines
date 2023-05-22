@@ -18,14 +18,8 @@ jobs:
           git config user.name "charles9s"
           git config user.email "charles@severalnines.com"
 
-      - name: Push code to development branch
-        run: |
-          git push origin HEAD:refs/heads/development
-
       - name: Create pull request from staging branch
         run: |
-          git checkout staging
-          git pull origin staging
           git checkout -b pull_request_branch
           git push origin pull_request_branch
 
@@ -44,14 +38,7 @@ jobs:
             # - npm run build
             # - ...
 
-      - name: Merge pull request to staging
+      - name: Merge pull request to development
         run: |
-          git fetch origin pull_request_branch
-          git checkout staging
-          git merge --no-ff pull_request_branch -m "Merge pull request"
-          git push origin staging
+          gh pr create --base development --head pull_request_branch --title "Pull Request from staging to development" --body "Automated pull request from CI/CD pipeline"
 
-      - name: Cleanup
-        run: |
-          git checkout development
-          git branch -D pull_request_branch
