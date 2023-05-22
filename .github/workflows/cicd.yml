@@ -20,7 +20,7 @@ jobs:
 
       - name: Push code to development branch
         run: |
-          git push origin HEAD:development
+          git push origin HEAD:refs/heads/development
 
       - name: Create pull request from staging branch
         run: |
@@ -32,14 +32,10 @@ jobs:
       - name: Deploy code to staging server
         uses: appleboy/ssh-action@master
         with:
-          proxy_host: ${{ secrets.JUMPHOST }}
-          proxy_port: ${{ secrets.JUMPPORT }}
-          proxy_username: ${{ secrets.JUMPUSER }}
-          proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: 22999
+          port: 22
           script: |
             cd s9s
             # Add any other commands related to your deployment here
@@ -52,12 +48,8 @@ jobs:
         run: |
           git fetch origin pull_request_branch
           git checkout staging
-          git merge pull_request_branch
+          git merge --no-ff pull_request_branch -m "Merge pull request"
           git push origin staging
-
-      - name: Deploy to production
-        # Add deployment steps to the production environment
-        # For example, using SSH or another deployment method
 
       - name: Cleanup
         run: |
