@@ -8,12 +8,28 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Connect to server via SSH
+      - name: Set up Git
+        run: |
+          git config user.name "charles9s"
+          git config user.email "charles@severalnines.com"
+
+      - name: Push code to development branch
+        run: |
+          git push origin HEAD:development
+
+      - name: Create pull request from staging branch
+        run: |
+          git checkout staging
+          git pull origin staging
+          git checkout -b pull_request_branch
+          git push origin pull_request_branch
+
+      - name: Deploy code to staging server
         uses: appleboy/ssh-action@master
         with:
           proxy_host: ${{ secrets.JUMPHOST }}
@@ -23,14 +39,27 @@ jobs:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: ${{ secrets.JUMPPORT }}
+          port: 22999
           script: |
-            # Update staging branch
-            git checkout staging
-            git pull origin development
+            cd s9s
+            # Add any other commands related to your deployment here
+            # For example:
+            # - npm install
+            # - npm run build
+            # - ...
 
-            # Push changes to staging branch
-            git push origin staging
+      - name: Merge pull request to staging
+        run: |
+          git fetch origin pull_request_branch
+          git checkout staging
+          git merge pull_request_branch
+          git push origin staging
 
-            # Update public_html/cicdtst folder
-            ssh -o StrictHostKeyChecking=no ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "cd public_html/cicdtst && git pull origin staging"
+      - name: Deploy to production
+        # Add deployment steps to the production environment
+        # For example, using SSH or another deployment method
+
+      - name: Cleanup
+        run: |
+          git checkout development
+          git branch -D pull_request_branch
